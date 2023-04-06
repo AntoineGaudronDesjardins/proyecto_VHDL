@@ -1,0 +1,6 @@
+.srcgestor_escrituragestion_escritura.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_gestor_escritura(test_gestor_escritura_arq)gestion_escritura.sym/test_gestor_escritura/_test_gestor_escritura_arq.var
+.srctest_gestor_escritura(test_gestor_escritura_arq)gestion_escritura_tb.vhd
+.vartest_gestor_escrituragestion_escritura.sym/test_gestor_escritura/prim.var

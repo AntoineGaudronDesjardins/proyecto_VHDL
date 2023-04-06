@@ -1,0 +1,6 @@
+.srcdebouncingantirebotes.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_antirebotes(test_antirebotes_arq)antirebotes.sym/test_antirebotes/_test_antirebotes_arq.var
+.srctest_antirebotes(test_antirebotes_arq)antirebotes_tb.vhd
+.vartest_antirebotesantirebotes.sym/test_antirebotes/prim.var

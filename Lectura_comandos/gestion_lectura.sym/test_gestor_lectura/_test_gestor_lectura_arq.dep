@@ -1,0 +1,6 @@
+.srcgestor_lecturagestion_lectura.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_gestor_lectura(test_gestor_lectura_arq)gestion_lectura.sym/test_gestor_lectura/_test_gestor_lectura_arq.var
+.srctest_gestor_lectura(test_gestor_lectura_arq)gestion_lectura_tb.vhd
+.vartest_gestor_lecturagestion_lectura.sym/test_gestor_lectura/prim.var

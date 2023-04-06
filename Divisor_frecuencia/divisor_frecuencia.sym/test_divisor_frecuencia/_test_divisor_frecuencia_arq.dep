@@ -1,0 +1,6 @@
+.srcdivisor_frecuenciadivisor_frecuencia.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_divisor_frecuencia(test_divisor_frecuencia_arq)divisor_frecuencia.sym/test_divisor_frecuencia/_test_divisor_frecuencia_arq.var
+.srctest_divisor_frecuencia(test_divisor_frecuencia_arq)divisor_frecuencia_tb.vhd
+.vartest_divisor_frecuenciadivisor_frecuencia.sym/test_divisor_frecuencia/prim.var

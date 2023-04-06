@@ -1,0 +1,6 @@
+.srcsistemasistema.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_sistema(test_sistema_arq)sistema.sym/test_sistema/_test_sistema_arq.var
+.srctest_sistema(test_sistema_arq)sistema_tb.vhd
+.vartest_sistemasistema.sym/test_sistema/prim.var

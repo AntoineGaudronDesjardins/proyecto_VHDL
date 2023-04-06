@@ -1,0 +1,6 @@
+.srcmotor_steppermotor.vhd
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vartest_motor(test_motor_arq)motor.sym/test_motor/_test_motor_arq.var
+.srctest_motor(test_motor_arq)motor_tb.vhd
+.vartest_motormotor.sym/test_motor/prim.var
