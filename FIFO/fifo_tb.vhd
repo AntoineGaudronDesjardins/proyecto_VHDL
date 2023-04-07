@@ -1,10 +1,20 @@
+-- **********************************************************************
+-- LIBRERIAS
+-- **********************************************************************
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+-- **********************************************************************
+-- ENTIDAD     (entradas/salidas, el fichero de simulaci�n no tiene)
+-- **********************************************************************
 entity fifo_tb is   
 end entity;
 
+
+-- **********************************************************************
+-- ARQUITECTURA   (descripci�n de los est�mulos)
+-- **********************************************************************
 architecture arch_fifo_tb of fifo_tb is
 
     -- global parameters --
