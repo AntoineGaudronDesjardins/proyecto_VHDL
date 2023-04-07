@@ -103,6 +103,7 @@
 # Begin description of library gestion_lectura
 [library]
  name = gestion_lectura
+ toplevel = test_gestor_lectura
   [options]
     [booloption]
      name	= -87
