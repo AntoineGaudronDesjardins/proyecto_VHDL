@@ -5,97 +5,89 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulaci髇 no tiene)
+-- ENTIDAD     (entradas/salidas, el fichero de simulaci贸n no tiene)
 -- **********************************************************************
 ENTITY test_antirebotes IS
 END    test_antirebotes;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripci髇 de los est韒ulos)
+-- ARQUITECTURA   (descripci贸n de los est铆mulos)
 -- **********************************************************************
 ARCHITECTURE test_antirebotes_arq OF test_antirebotes IS
-    --Declaraci髇 de componentes
+    --Declaraci贸n de componentes
     COMPONENT debouncing
-    port (
+    PORT (
         -- ENTRADAS --
-        CLK : in std_logic;
-        RESET : in std_logic;
-        BUTTON_IN : in std_logic;
-        -- SALIDAS
-        BUTTON_OUT : out std_logic
+        CLK         : IN std_logic;
+        RESET       : IN std_logic;
+        BUTTON_IN   : IN std_logic;
+        -- SALIDAS --
+        BUTTON_OUT  : OUT std_logic
     );
     END COMPONENT;
 
     -- Entradas
-    SIGNAL CLK_test		: std_logic;
+    SIGNAL CLK_test		    : std_logic;
     SIGNAL RESET_test 		: std_logic;
     SIGNAL BUTTON_IN_test	: std_logic;
     
     -- Salida
-    SIGNAL BUTTON_OUT_test  	: std_logic;
+    SIGNAL BUTTON_OUT_test  : std_logic;
 
     
     -- Internas
-    SIGNAL FIN_test:  std_logic := '0' ;       -- Indica fin de simulaci髇. Se pone a '1' al final de la simulacion. 
-    					       -- Se utiliza para bloquear el reloj y apreciar mejor el final de la simulaci髇.				       
-    
     constant ciclo : time := 10 ns;  -- 100Mhz
 
 
 BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
-    -- Se crea el componente U1 y se conecta a las se馻les internas de la arquitectura
+    -- Se crea el componente U1 y se conecta a las se帽ales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: debouncing PORT MAP(
-                        CLK 		=> CLK_test,
-                        RESET		=> RESET_test,
-                        BUTTON_IN	=> BUTTON_IN_test,
-                        BUTTON_OUT	=> BUTTON_OUT_test                     
-                     );
+        CLK 		=> CLK_test,
+        RESET		=> RESET_test,
+        BUTTON_IN	=> BUTTON_IN_test,
+        BUTTON_OUT	=> BUTTON_OUT_test                     
+    );
 
-    GenCLK: process
-    begin
-        if (FIN_test='1') THEN
-            CLK_test<= '0';         WAIT;     -- Bloquea el reloj
-        ELSE
-            CLK_test<= '1';     wait for ciclo/2;
-            CLK_test<= '0';     wait for ciclo/2;
-            
-        END IF;
-    end process GenCLK;
+    GenCLK: PROCESS
+    BEGIN
+        CLK_test <= '1';     WAIT FOR ciclo/2;
+        CLK_test <= '0';     WAIT FOR ciclo/2;
+    END PROCESS GenCLK;
 
-    GenReset: process
-    begin
-        RESET_test<= '1';     wait for ciclo;     -- Nos situamos en el flanco de bajada del reloj
-        RESET_test<= '0';     wait;
-    end process GenReset;
+    GenReset: PROCESS
+    BEGIN
+        RESET_test <= '1';     WAIT FOR ciclo;     -- Nos situamos en el flanco de subida del reloj
+        RESET_test <= '0';     WAIT;
+    END PROCESS GenReset;
 
     tb: PROCESS
     BEGIN
-    	--Inicializaci髇
-	BUTTON_IN_test <= '0';
-	
-	wait for ciclo*3;
-	
-	BUTTON_IN_test <= '1';
-	
-	wait for ciclo*3;
-    		
-	BUTTON_IN_test <= '0';
-	
-	wait for ciclo*3;
+    	--Inicializaci贸n
+        BUTTON_IN_test <= '0';
+        
+        WAIT FOR ciclo*3;
+        
+        BUTTON_IN_test <= '1';
+        
+        WAIT FOR ciclo*3;
+                
+        BUTTON_IN_test <= '0';
+        
+        WAIT FOR ciclo*3;
 
-	BUTTON_IN_test <= '1';
+        BUTTON_IN_test <= '1';
+        
+        WAIT FOR ciclo*6;
+                
+        BUTTON_IN_test <= '0';
+        
+        WAIT FOR ciclo*3;
+            
+        WAIT;
 	
-	wait for ciclo*6;
-    		
-	BUTTON_IN_test <= '0';
-	
-	wait for ciclo*3;
-		
-	wait;
-	
-    end process tb;
+    END PROCESS tb;
 END test_antirebotes_arq;
 
 
