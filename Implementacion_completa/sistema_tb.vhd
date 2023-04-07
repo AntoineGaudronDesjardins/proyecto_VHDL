@@ -5,119 +5,90 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulación no tiene)
+-- ENTIDAD     (entradas/salidas, el fichero de simulaciï¿½n no tiene)
 -- **********************************************************************
 ENTITY test_sistema IS
 END    test_sistema;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripción de los estímulos)
+-- ARQUITECTURA   (descripciï¿½n de los estï¿½mulos)
 -- **********************************************************************
 ARCHITECTURE test_sistema_arq OF test_sistema IS
-    --Declaración de componentes
+    --Declaraciï¿½n de componentes
     COMPONENT sistema
-    port (
+    PORT (
         -- ENTRADAS --
-        CLK : in std_logic;
-        BUTTON_1 : in std_logic;
-        BUTTON_2 : in std_logic;
+        CLK          : in std_logic;
+        BUTTON_1     : in std_logic;
+        BUTTON_2     : in std_logic;
         BUTTON_RESET : in std_logic; -- Este es el botÃ³n de reset
 
-        -- SALIDAS
-        MOTOR_OUT: out std_logic_vector(3 downto 0)
+        -- SALIDAS --
+        MOTOR_OUT : out std_logic_vector(3 downto 0);
+        LED       : out std_logic
     );
     END COMPONENT;
 
     -- Entradas
-    SIGNAL CLK_test		: std_logic;
-    SIGNAL BUTTON_1_test	: std_logic;
-    SIGNAL BUTTON_2_test	: std_logic;        
-    SIGNAL BUTTON_RESET_test 	: std_logic;
+    SIGNAL CLK_test          : std_logic;
+    SIGNAL BUTTON_1_test     : std_logic;
+    SIGNAL BUTTON_2_test     : std_logic;        
+    SIGNAL BUTTON_RESET_test : std_logic;
     
     -- Salida
-    SIGNAL MOTOR_OUT_test  	: std_logic_vector(3 downto 0);
+    SIGNAL MOTOR_OUT_test : std_logic_vector(3 downto 0);
+    SIGNAL LED_test       : std_logic;
 
     
     -- Internas
-    SIGNAL FIN_test:  std_logic := '0' ;       -- Indica fin de simulación. Se pone a '1' al final de la simulacion. 
-    					       -- Se utiliza para bloquear el reloj y apreciar mejor el final de la simulación.				       
-    
     constant ciclo : time := 10 ns;  -- 100Mhz
-
 
 BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
-    -- Se crea el componente U1 y se conecta a las señales internas de la arquitectura
+    -- Se crea el componente U1 y se conecta a las seï¿½ales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: sistema PORT MAP(
-                        CLK 		=> CLK_test,
-                        BUTTON_1 	=> BUTTON_1_test,
-                        BUTTON_2 	=> BUTTON_2_test,
-                        BUTTON_RESET	=> BUTTON_RESET_test,
-                        MOTOR_OUT	=> MOTOR_OUT_test                      
-                     );
+        CLK          => CLK_test,
+        BUTTON_1     => BUTTON_1_test,
+        BUTTON_2     => BUTTON_2_test,
+        BUTTON_RESET => BUTTON_RESET_test,
+        MOTOR_OUT    => MOTOR_OUT_test,
+        LED          => LED_test
+    );
 
     GenCLK: process
     begin
-        if (FIN_test='1') THEN
-            CLK_test<= '0';         WAIT;     -- Bloquea el reloj
-        ELSE
-            CLK_test<= '1';     wait for ciclo/2;
-            CLK_test<= '0';     wait for ciclo/2;
-            
-        END IF;
+        CLK_test<= '1';     wait for ciclo/2;
+        CLK_test<= '0';     wait for ciclo/2;
     end process GenCLK;
 
     GenReset: process
     begin
-        BUTTON_RESET_test<= '1';     wait for ciclo;     -- Nos situamos en el flanco de bajada del reloj
+        BUTTON_RESET_test<= '1';     wait for 5 ms;
         BUTTON_RESET_test<= '0';     wait;
     end process GenReset;
 
     tb: PROCESS
     BEGIN
-    	--Inicialización
+        --Inicializaciï¿½n
+        BUTTON_1_test <= '0';
+        BUTTON_2_test <= '0';
+        
+        wait for 10 ms;
+        
+        BUTTON_1_test <= '1'; wait for 20 ms;
+        BUTTON_1_test <= '0';
 
-    	BUTTON_1_test <= '0';
-	BUTTON_2_test <= '0';
-	
-	wait for ciclo*20;
-	
-	BUTTON_2_test <= '1'; wait for ciclo*6;
-	BUTTON_2_test <= '0';
-	wait for ciclo*20;
-	
-	BUTTON_1_test <= '1'; wait for ciclo*400000;
-	BUTTON_1_test <= '0';
+        wait for 10 ms;
+        
+        BUTTON_1_test <= '1'; wait for 1 sec;
+        BUTTON_1_test <= '0';
 
-	wait for ciclo*1300000;
-	
-	BUTTON_1_test <= '1'; wait for ciclo*400000;
-	BUTTON_1_test <= '0';
-	
-	wait;
+        wait for 3 sec;
+        
+        BUTTON_2_test <= '1'; wait for 50 ms;
+        BUTTON_2_test <= '0';
+        
+        wait;
     end process tb;
 END test_sistema_arq;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -43,7 +43,7 @@
     []
     [stringoption]
      name	= -r
-     value	= 1ps
+     value	= 1ns
     []
     [multistringoption]
      name	= -nowarn
@@ -135,6 +135,36 @@
      invert	= 0
     []
   []
+ [file]
+  name = antirebotes.vhd
+  [options]
+  []
+ []
+ [file]
+  name = divisor_frecuencia.vhd
+  [options]
+  []
+ []
+ [file]
+  name = fifo.vhd
+  [options]
+  []
+ []
+ [file]
+  name = gestion_escritura.vhd
+  [options]
+  []
+ []
+ [file]
+  name = gestion_lectura.vhd
+  [options]
+  []
+ []
+ [file]
+  name = motor.vhd
+  [options]
+  []
+ []
  [file]
   name = sistema.vhd
   [options]

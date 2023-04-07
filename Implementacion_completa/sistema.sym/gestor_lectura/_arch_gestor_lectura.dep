@@ -1,0 +1,5 @@
+ieeevarstd_logic_1164ieee.sym/std_logic_1164/prim.var
+ieeesrcstd_logic_1164stdlogic.vhd
+.vargestor_lectura(arch_gestor_lectura)sistema.sym/gestor_lectura/_arch_gestor_lectura.var
+.srcgestor_lectura(arch_gestor_lectura)gestion_lectura.vhd
+.vargestor_lecturasistema.sym/gestor_lectura/prim.var
