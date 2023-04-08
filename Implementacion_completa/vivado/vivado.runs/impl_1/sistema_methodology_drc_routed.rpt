@@ -1,0 +1,252 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Sat Apr  8 12:48:29 2023
+| Host         : DESKTOP-OTSQRGJ running 64-bit major release  (build 9200)
+| Command      : report_methodology -file sistema_methodology_drc_routed.rpt -pb sistema_methodology_drc_routed.pb -rpx sistema_methodology_drc_routed.rpx
+| Design       : sistema
+| Device       : xc7a35tcpg236-1
+| Speed File   : -1
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 43
++-----------+----------+-------------------------------+------------+
+| Rule      | Severity | Description                   | Violations |
++-----------+----------+-------------------------------+------------+
+| TIMING-17 | Warning  | Non-clocked sequential cell   | 16         |
+| TIMING-18 | Warning  | Missing input or output delay | 4          |
+| TIMING-20 | Warning  | Non-clocked latch             | 23         |
++-----------+----------+-------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-17#1 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#2 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#3 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#4 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#5 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#6 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#7 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#8 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#9 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#10 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/FSM_onehot_actual_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#11 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/contador_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#12 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/contador_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#13 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/contador_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#14 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/contador_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#15 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/contador_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#16 Warning
+Non-clocked sequential cell  
+The clock pin motor_stepper_inst/contador_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on BUTTON_1 relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on BUTTON_2 relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on BUTTON_RESET relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An output delay is missing on LED relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch gestor_escritura_inst/FSM_onehot_futuro_reg[0] cannot be properly analyzed as its control pin gestor_escritura_inst/FSM_onehot_futuro_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch gestor_escritura_inst/FSM_onehot_futuro_reg[1] cannot be properly analyzed as its control pin gestor_escritura_inst/FSM_onehot_futuro_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch gestor_escritura_inst/FSM_onehot_futuro_reg[2] cannot be properly analyzed as its control pin gestor_escritura_inst/FSM_onehot_futuro_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch gestor_escritura_inst/WORD_FIFO_WR_reg[5] cannot be properly analyzed as its control pin gestor_escritura_inst/WORD_FIFO_WR_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch gestor_lectura_inst/CICLOS_reg[3] cannot be properly analyzed as its control pin gestor_lectura_inst/CICLOS_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch gestor_lectura_inst/FSM_onehot_futuro_reg[0] cannot be properly analyzed as its control pin gestor_lectura_inst/FSM_onehot_futuro_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#7 Warning
+Non-clocked latch  
+The latch gestor_lectura_inst/FSM_onehot_futuro_reg[1] cannot be properly analyzed as its control pin gestor_lectura_inst/FSM_onehot_futuro_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch gestor_lectura_inst/FSM_onehot_futuro_reg[2] cannot be properly analyzed as its control pin gestor_lectura_inst/FSM_onehot_futuro_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#9 Warning
+Non-clocked latch  
+The latch gestor_lectura_inst/FSM_onehot_futuro_reg[3] cannot be properly analyzed as its control pin gestor_lectura_inst/FSM_onehot_futuro_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#10 Warning
+Non-clocked latch  
+The latch gestor_lectura_inst/READ_FIFO_reg cannot be properly analyzed as its control pin gestor_lectura_inst/READ_FIFO_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#11 Warning
+Non-clocked latch  
+The latch gestor_lectura_inst/SENTIDO_reg cannot be properly analyzed as its control pin gestor_lectura_inst/SENTIDO_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#12 Warning
+Non-clocked latch  
+The latch gestor_lectura_inst/START_reg cannot be properly analyzed as its control pin gestor_lectura_inst/START_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#13 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FINISHED_reg cannot be properly analyzed as its control pin motor_stepper_inst/FINISHED_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#14 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[0] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#15 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[1] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#16 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[2] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#17 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[3] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#18 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[4] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#19 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[5] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#20 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[6] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#21 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[7] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#22 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[8] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[8]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#23 Warning
+Non-clocked latch  
+The latch motor_stepper_inst/FSM_onehot_futuro_reg[9] cannot be properly analyzed as its control pin motor_stepper_inst/FSM_onehot_futuro_reg[9]/G is not reached by a timing clock
+Related violations: <none>
+
+

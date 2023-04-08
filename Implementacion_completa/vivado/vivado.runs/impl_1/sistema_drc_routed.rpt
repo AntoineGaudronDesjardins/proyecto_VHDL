@@ -1,0 +1,85 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Sat Apr  8 12:48:27 2023
+| Host         : DESKTOP-OTSQRGJ running 64-bit major release  (build 9200)
+| Command      : report_drc -file sistema_drc_routed.rpt -pb sistema_drc_routed.pb -rpx sistema_drc_routed.rpx
+| Design       : sistema
+| Device       : xc7a35tcpg236-1
+| Speed File   : -1
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 8
++----------+----------+-----------------------------------------------------+------------+
+| Rule     | Severity | Description                                         | Violations |
++----------+----------+-----------------------------------------------------+------------+
+| CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
+| PDRC-153 | Warning  | Gated clock check                                   | 7          |
++----------+----------+-----------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+CFGBVS-1#1 Warning
+Missing CFGBVS and CONFIG_VOLTAGE Design Properties  
+Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0.  It is suggested to specify these either using the 'Edit Device Properties' function in the GUI or directly in the XDC file using the following syntax:
+
+ set_property CFGBVS value1 [current_design]
+ #where value1 is either VCCO or GND
+
+ set_property CONFIG_VOLTAGE value2 [current_design]
+ #where value2 is the voltage provided to configuration bank 0
+
+Refer to the device configuration user guide for more information.
+Related violations: <none>
+
+PDRC-153#1 Warning
+Gated clock check  
+Net gestor_escritura_inst/futuro__0 is a gated clock net sourced by a combinational pin gestor_escritura_inst/FSM_onehot_futuro_reg[2]_i_2/O, cell gestor_escritura_inst/FSM_onehot_futuro_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#2 Warning
+Gated clock check  
+Net gestor_lectura_inst/READ_FIFO__0_n_1 is a gated clock net sourced by a combinational pin gestor_lectura_inst/READ_FIFO__0/O, cell gestor_lectura_inst/READ_FIFO__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#3 Warning
+Gated clock check  
+Net gestor_lectura_inst/SENTIDO_reg_i_2_n_1 is a gated clock net sourced by a combinational pin gestor_lectura_inst/SENTIDO_reg_i_2/O, cell gestor_lectura_inst/SENTIDO_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#4 Warning
+Gated clock check  
+Net gestor_lectura_inst/START__0_n_1 is a gated clock net sourced by a combinational pin gestor_lectura_inst/START__0/O, cell gestor_lectura_inst/START__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#5 Warning
+Gated clock check  
+Net gestor_lectura_inst/futuro is a gated clock net sourced by a combinational pin gestor_lectura_inst/futuro_inferred__0/i_/O, cell gestor_lectura_inst/futuro_inferred__0/i_. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#6 Warning
+Gated clock check  
+Net motor_stepper_inst/FINISHED_reg_i_1_n_1 is a gated clock net sourced by a combinational pin motor_stepper_inst/FINISHED_reg_i_1/O, cell motor_stepper_inst/FINISHED_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#7 Warning
+Gated clock check  
+Net motor_stepper_inst/futuro is a gated clock net sourced by a combinational pin motor_stepper_inst/FSM_onehot_futuro_reg[9]_i_2/O, cell motor_stepper_inst/FSM_onehot_futuro_reg[9]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+
