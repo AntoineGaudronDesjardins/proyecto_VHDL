@@ -5,16 +5,16 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulaci髇 no tiene)
+-- ENTIDAD     (entradas/salidas, el fichero de simulaci贸n no tiene)
 -- **********************************************************************
 ENTITY test_motor IS
 END    test_motor;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripci髇 de los est韒ulos)
+-- ARQUITECTURA   (descripci贸n de los est铆mulos)
 -- **********************************************************************
 ARCHITECTURE test_motor_arq OF test_motor IS
-    --Declaraci髇 de componentes
+    --Declaraci贸n de componentes
     COMPONENT motor_stepper
     	port (
         	-- ENTRADAS --
@@ -40,89 +40,61 @@ ARCHITECTURE test_motor_arq OF test_motor IS
     SIGNAL MOTOR_OUT_test  	: std_logic_vector(3 downto 0);
     SIGNAL FINISHED_test  	: std_logic;
     
-    -- Internas
-    SIGNAL FIN_test:  std_logic := '0' ;       -- Indica fin de simulaci髇. Se pone a '1' al final de la simulacion. 
-    					       -- Se utiliza para bloquear el reloj y apreciar mejor el final de la simulaci髇.
-    SIGNAL CLK_MOTOR_test : std_logic := '0';					       
-    
-    constant ciclo : time := 10 ms;  -- 100Hz
-
+    -- Internas				       
+    CONSTANT ciclo          : time := 10 ms;  -- 100Hz
 
 BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
-    -- Se crea el componente U1 y se conecta a las se馻les internas de la arquitectura
+    -- Se crea el componente U1 y se conecta a las se帽ales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: motor_stepper PORT MAP(
-                        CLK_SLOW => CLK_SLOW_test,
-                        RESET    => RESET_test,
-                        SENTIDO	 => SENTIDO_test,
-                        CICLOS	 => CICLOS_test,
-                        START	 => START_test,
-                        MOTOR_OUT=> MOTOR_OUT_test,
-                        FINISHED => FINISHED_test
-                     );
+        CLK_SLOW => CLK_SLOW_test,
+        RESET    => RESET_test,
+        SENTIDO	 => SENTIDO_test,
+        CICLOS	 => CICLOS_test,
+        START	 => START_test,
+        MOTOR_OUT=> MOTOR_OUT_test,
+        FINISHED => FINISHED_test
+    );
 
 
-    -- ======================================================================
-    -- Proceso del reloj. Se ejecuta hasta que FIN_test='1'
-    -- ======================================================================
-    GenCLK: process
-    begin
-        if (FIN_test='1') THEN
-            CLK_MOTOR_test<= '0';         WAIT;     -- Bloquea el reloj
-        ELSE
-            CLK_MOTOR_test<= '1';     wait for ciclo/2;
-            CLK_MOTOR_test<= '0';     wait for ciclo/2;
-            
-        END IF;
-    end process GenCLK;
+    -- ///////////////////////////////////////////////////////////////////////////////
+    -- Proceso del reloj
+    -- ///////////////////////////////////////////////////////////////////////////////
+    Gen2CLK: PROCESS
+    BEGIN
+        CLK_SLOW_test <= '1';     WAIT FOR 25*ciclo;
+        CLK_SLOW_test <= '0';     WAIT FOR 25*ciclo;
+    END PROCESS Gen2CLK;
 
-    Gen2CLK: process
-    begin
-        if (FIN_test='1') THEN
-            CLK_SLOW_test<= '0';         WAIT;     -- Bloquea el reloj
-        ELSE
-            CLK_SLOW_test<= '1';     wait for 25*ciclo;
-            CLK_SLOW_test<= '0';     wait for 25*ciclo;
-            
-        END IF;
-    end process Gen2CLK;
-    -- ======================================================================
-    -- Proceso del reloj. Se ejecuta hasta que FIN_test='1'
-    -- ======================================================================
-    GenReset: process
-    begin
-        RESET_test<= '1';     wait for ciclo;     -- Nos situamos en el flanco de bajada del reloj
-        RESET_test<= '0';     wait;
-    end process GenReset;
+    -- ///////////////////////////////////////////////////////////////////////////////
+    -- Proceso de generacion del RESET
+    -- ///////////////////////////////////////////////////////////////////////////////
+    GenReset: PROCESS
+    BEGIN
+        RESET_test <= '1';     WAIT FOR 25*ciclo;     -- Nos situamos en el flanco de bajada del reloj
+        RESET_test <= '0';     WAIT;
+    END PROCESS GenReset;
 
-    -- ======================================================================
-    -- Proceso para el banco de pruebas para el componente de tipo "tren"
-    -- ======================================================================
+    -- ///////////////////////////////////////////////////////////////////////////////
+    -- Proceso para el banco de pruebas para el componente de tipo "motor_stepper"
+    -- ///////////////////////////////////////////////////////////////////////////////
     tb: PROCESS
     BEGIN
-    	--Inicializaci髇
+    	--Inicializaci贸n
     	SENTIDO_test	<= '1';
-    	CICLOS_test 	<= "1001"; -- 4 + 5 = 9
-    	START_test	<= '0';
+    	CICLOS_test 	<= "0011"; -- mod(D1,5) + 2
+    	START_test      <= '0';
     	
-    	wait for 50*ciclo*3;
+    	WAIT FOR 50*ciclo*3;
     	
     	START_test	<= '1';
     	wait for 50*ciclo;
     	
     	START_test	<= '0';
-    	wait for 50*ciclo*20;
-    	
-    	START_test	<= '1';   	
-    	wait for 50*ciclo;
-    	
-    	START_test	<= '0';    	
+    	WAIT;
 	
-	
-	wait;
-	
-    end process tb;
+    END PROCESS tb;
 END test_motor_arq;
 
 
