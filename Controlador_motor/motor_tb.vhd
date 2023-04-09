@@ -5,16 +5,16 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulaci贸n no tiene)
+-- ENTIDAD     (entradas/salidas, el fichero de simulaci髇 no tiene)
 -- **********************************************************************
 ENTITY test_motor IS
 END    test_motor;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripci贸n de los est铆mulos)
+-- ARQUITECTURA   (descripci髇 de los est韒ulos)
 -- **********************************************************************
 ARCHITECTURE test_motor_arq OF test_motor IS
-    --Declaraci贸n de componentes
+    --Declaraci髇 de componentes
     COMPONENT motor_stepper
     	port (
         	-- ENTRADAS --
@@ -45,7 +45,7 @@ ARCHITECTURE test_motor_arq OF test_motor IS
 
 BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
-    -- Se crea el componente U1 y se conecta a las se帽ales internas de la arquitectura
+    -- Se crea el componente U1 y se conecta a las se馻les internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: motor_stepper PORT MAP(
         CLK_SLOW => CLK_SLOW_test,
@@ -81,8 +81,8 @@ BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
     tb: PROCESS
     BEGIN
-    	--Inicializaci贸n
-    	SENTIDO_test	<= '1';
+    	--Inicializaci髇
+    	SENTIDO_test	<= '0';
     	CICLOS_test 	<= "0011"; -- mod(D1,5) + 2
     	START_test      <= '0';
     	
@@ -92,23 +92,14 @@ BEGIN
     	wait for 50*ciclo;
     	
     	START_test	<= '0';
+    	
+    	wait for 1500*ciclo;
+    	
+    	START_test	<= '1';
+    	wait for 50*ciclo;
+    	
+    	START_test	<= '0';
     	WAIT;
 	
     END PROCESS tb;
 END test_motor_arq;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

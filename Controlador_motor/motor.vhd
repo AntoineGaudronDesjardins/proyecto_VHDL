@@ -48,6 +48,9 @@ BEGIN
                         contador <= contador + 1;
                     END IF;
                 END IF;
+                IF (actual = reposo) THEN
+                	contador <= 0;
+                END IF;	
             END IF;
         END IF;
     END PROCESS;
