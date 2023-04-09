@@ -27,7 +27,7 @@ architecture arch_debouncing of debouncing is
 begin
 
     -- PROCESO DE SINCRONIZACION
-    process (CLK)
+    process (CLK, RESET)
     begin
         if (rising_edge(CLK)) then
             -- RESET SINCRONO A NIVEL ALTO
@@ -65,10 +65,10 @@ begin
         end if;
         
         -- PROCESO COMBINACIONAL DE ENTRADA
-        if (BUTTON_IN = '0') then
-            futuro <= inactivo;
-        else
+        if (rising_edge(BUTTON_IN)) then
             futuro <= activo;
+        else
+            futuro <= inactivo;
         end if;
     end process;
 
