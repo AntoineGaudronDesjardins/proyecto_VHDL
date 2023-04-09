@@ -5,16 +5,16 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulaci贸n no tiene)
+-- ENTIDAD     (entradas/salidas, el fichero de simulaci髇 no tiene)
 -- **********************************************************************
 ENTITY test_antirebotes IS
 END    test_antirebotes;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripci贸n de los est铆mulos)
+-- ARQUITECTURA   (descripci髇 de los est韒ulos)
 -- **********************************************************************
 ARCHITECTURE test_antirebotes_arq OF test_antirebotes IS
-    --Declaraci贸n de componentes
+    --Declaraci髇 de componentes
     COMPONENT debouncing
     PORT (
         -- ENTRADAS --
@@ -41,7 +41,7 @@ ARCHITECTURE test_antirebotes_arq OF test_antirebotes IS
 
 BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
-    -- Se crea el componente U1 y se conecta a las se帽ales internas de la arquitectura
+    -- Se crea el componente U1 y se conecta a las se馻les internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: debouncing PORT MAP(
         CLK 		=> CLK_test,
@@ -64,7 +64,7 @@ BEGIN
 
     tb: PROCESS
     BEGIN
-    	--Inicializaci贸n
+    	--Inicializaci髇
         BUTTON_IN_test <= '0';
         
         WAIT FOR ciclo*3;
@@ -79,32 +79,21 @@ BEGIN
 
         BUTTON_IN_test <= '1';
         
-        WAIT FOR ciclo*6;
+        WAIT FOR ciclo*30;
                 
         BUTTON_IN_test <= '0';
         
         WAIT FOR ciclo*3;
-            
+
+        BUTTON_IN_test <= '1';
+        
+        WAIT FOR ciclo*10;
+                
+        BUTTON_IN_test <= '0';
+        
+        WAIT FOR ciclo*3;            
         WAIT;
 	
     END PROCESS tb;
 END test_antirebotes_arq;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
