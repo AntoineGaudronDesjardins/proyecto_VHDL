@@ -18,6 +18,7 @@ architecture arch_divisor_frecuencia of divisor_frecuencia is
 
     -- CODIGO DEL ALUMNO --
     signal contador : integer range 0 to N_MAX - 1 := 0;
+    signal conmutador : std_logic := '1';
     
 begin
 
@@ -29,12 +30,11 @@ begin
                 contador <= 0;
                 CLK_SLOW <= '0';
             else
+            	contador <= contador + 1;
                 if (contador = N_MAX - 1) then
-                    CLK_SLOW <= '1';
-                    contador <= 0;
-                else
-                    CLK_SLOW <= '0';
-                    contador <= contador + 1;
+            		conmutador <= NOT conmutador;
+            		CLK_SLOW <= conmutador;
+            		contador <= 0;
                 end if;
             end if;
         end if;

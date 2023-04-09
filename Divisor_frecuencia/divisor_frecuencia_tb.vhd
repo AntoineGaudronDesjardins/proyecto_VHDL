@@ -5,16 +5,16 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulaci�n no tiene)
+-- ENTIDAD     (entradas/salidas, el fichero de simulaci?n no tiene)
 -- **********************************************************************
 ENTITY test_divisor_frecuencia IS
 END    test_divisor_frecuencia;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripci�n de los est�mulos)
+-- ARQUITECTURA   (descripci?n de los est?mulos)
 -- **********************************************************************
 ARCHITECTURE test_divisor_frecuencia_arq OF test_divisor_frecuencia IS
-    --Declaraci�n de componentes
+    --Declaraci?n de componentes
     COMPONENT divisor_frecuencia
         GENERIC (
             N_MAX : integer := 50000000
@@ -40,11 +40,11 @@ ARCHITECTURE test_divisor_frecuencia_arq OF test_divisor_frecuencia IS
 
 BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
-    -- Se crea el componente U1 y se conecta a las se�ales internas de la arquitectura
+    -- Se crea el componente U1 y se conecta a las se?ales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: divisor_frecuencia
         GENERIC MAP(
-            N_MAX => 5      -- Es mas visible para la simulaci�n
+            N_MAX => 5      -- Es mas visible para la simulaci?n
         )
         PORT MAP(
             CLK 		=> CLK_test,
