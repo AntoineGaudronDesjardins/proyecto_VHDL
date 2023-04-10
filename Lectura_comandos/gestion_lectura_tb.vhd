@@ -79,7 +79,7 @@ BEGIN
     tb: PROCESS
     BEGIN
     	--Inicializaci?n
-        FIFO_EMPTY_test <= '1';
+        FIFO_EMPTY_test <= '0';
         FIFO_WORD_RD_test <= "00110";
         FINISHED_test <= '0';
         

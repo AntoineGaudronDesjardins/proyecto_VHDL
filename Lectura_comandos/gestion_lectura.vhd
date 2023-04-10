@@ -51,7 +51,7 @@ begin
                 READ_FIFO <= '0';
                 SENTIDO <= '0';
                 START <= '0';
-                if (FINISHED = '0' and FIFO_EMPTY = '1') then
+                if (FINISHED = '0' and FIFO_EMPTY = '0') then
                     futuro <= reading;
                 end if;
             
