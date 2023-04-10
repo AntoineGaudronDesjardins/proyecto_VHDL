@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Sat Apr  8 12:48:27 2023
+| Date         : Mon Apr 10 22:26:59 2023
 | Host         : DESKTOP-OTSQRGJ running 64-bit major release  (build 9200)
 | Command      : report_drc -file sistema_drc_routed.rpt -pb sistema_drc_routed.pb -rpx sistema_drc_routed.rpx
 | Design       : sistema
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 8
+             Violations found: 11
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| PDRC-153 | Warning  | Gated clock check                                   | 7          |
+| PDRC-153 | Warning  | Gated clock check                                   | 10         |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -49,35 +49,50 @@ Related violations: <none>
 
 PDRC-153#1 Warning
 Gated clock check  
-Net gestor_escritura_inst/futuro__0 is a gated clock net sourced by a combinational pin gestor_escritura_inst/FSM_onehot_futuro_reg[2]_i_2/O, cell gestor_escritura_inst/FSM_onehot_futuro_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net debouncing_inst/futuro__0 is a gated clock net sourced by a combinational pin debouncing_inst/FSM_onehot_futuro_reg[3]_i_2/O, cell debouncing_inst/FSM_onehot_futuro_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#2 Warning
 Gated clock check  
-Net gestor_lectura_inst/READ_FIFO__0_n_1 is a gated clock net sourced by a combinational pin gestor_lectura_inst/READ_FIFO__0/O, cell gestor_lectura_inst/READ_FIFO__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net debouncing_inst1/futuro__0 is a gated clock net sourced by a combinational pin debouncing_inst1/FSM_onehot_futuro_reg[3]_i_2__0/O, cell debouncing_inst1/FSM_onehot_futuro_reg[3]_i_2__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#3 Warning
 Gated clock check  
-Net gestor_lectura_inst/SENTIDO_reg_i_2_n_1 is a gated clock net sourced by a combinational pin gestor_lectura_inst/SENTIDO_reg_i_2/O, cell gestor_lectura_inst/SENTIDO_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net debouncing_inst2/futuro__0 is a gated clock net sourced by a combinational pin debouncing_inst2/FSM_onehot_futuro_reg[3]_i_2__1/O, cell debouncing_inst2/FSM_onehot_futuro_reg[3]_i_2__1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#4 Warning
 Gated clock check  
-Net gestor_lectura_inst/START__0_n_1 is a gated clock net sourced by a combinational pin gestor_lectura_inst/START__0/O, cell gestor_lectura_inst/START__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net gestor_escritura_inst/futuro__0 is a gated clock net sourced by a combinational pin gestor_escritura_inst/FSM_onehot_futuro_reg[2]_i_2/O, cell gestor_escritura_inst/FSM_onehot_futuro_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#5 Warning
 Gated clock check  
-Net gestor_lectura_inst/futuro is a gated clock net sourced by a combinational pin gestor_lectura_inst/futuro_inferred__0/i_/O, cell gestor_lectura_inst/futuro_inferred__0/i_. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net gestor_lectura_inst/READ_FIFO__0_n_1 is a gated clock net sourced by a combinational pin gestor_lectura_inst/READ_FIFO__0/O, cell gestor_lectura_inst/READ_FIFO__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#6 Warning
 Gated clock check  
-Net motor_stepper_inst/FINISHED_reg_i_1_n_1 is a gated clock net sourced by a combinational pin motor_stepper_inst/FINISHED_reg_i_1/O, cell motor_stepper_inst/FINISHED_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net gestor_lectura_inst/SENTIDO_reg_i_2_n_1 is a gated clock net sourced by a combinational pin gestor_lectura_inst/SENTIDO_reg_i_2/O, cell gestor_lectura_inst/SENTIDO_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#7 Warning
+Gated clock check  
+Net gestor_lectura_inst/START__0_n_1 is a gated clock net sourced by a combinational pin gestor_lectura_inst/START__0/O, cell gestor_lectura_inst/START__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#8 Warning
+Gated clock check  
+Net gestor_lectura_inst/futuro is a gated clock net sourced by a combinational pin gestor_lectura_inst/futuro_inferred__0/i_/O, cell gestor_lectura_inst/futuro_inferred__0/i_. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#9 Warning
+Gated clock check  
+Net motor_stepper_inst/FINISHED_reg_i_1_n_1 is a gated clock net sourced by a combinational pin motor_stepper_inst/FINISHED_reg_i_1/O, cell motor_stepper_inst/FINISHED_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#10 Warning
 Gated clock check  
 Net motor_stepper_inst/futuro is a gated clock net sourced by a combinational pin motor_stepper_inst/FSM_onehot_futuro_reg[9]_i_2/O, cell motor_stepper_inst/FSM_onehot_futuro_reg[9]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>

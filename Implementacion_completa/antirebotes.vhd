@@ -18,7 +18,7 @@ end entity;
 architecture arch_debouncing of debouncing is
 
     -- CODIGO DEL ALUMNO --
-    type ESTADOS is (inactivo, activo);
+    type ESTADOS is (inactivo, filtro, activo, espera);
     signal actual, futuro : ESTADOS := inactivo;
     
     signal ciclos_antirebotes   : integer := CICLOS_FILTER;
@@ -36,26 +36,18 @@ begin
                 actual <= inactivo;
             else
                 -- ACTUALIZACION DEL ESTADO ACTUAL (estado y contador)
-                if (actual = activo) then
-                    actual <= inactivo;
+                actual <= futuro;
+                if (futuro = filtro) then
+                    contador_antirebotes <= contador_antirebotes + 1;
                 else
-                    if (futuro = activo) then
-                        if (contador_antirebotes + 1 = ciclos_antirebotes) then
-                            contador_antirebotes <= 0;
-                            actual <= futuro;
-                        else
-                            contador_antirebotes <= contador_antirebotes + 1;
-                        end if;
-                    else
-                        contador_antirebotes <= 0;
-                    end if;
+                    contador_antirebotes <= 0;
                 end if;
             end if;
         end if;
     end process;
     
     -- PROCESO COMBINACIONAL
-    process (BUTTON_IN, actual)
+    process (BUTTON_IN, actual, contador_antirebotes)
     begin
         -- PROCESO COMBINACIONAL DE SALIDA
         if (actual = activo) then
@@ -65,10 +57,24 @@ begin
         end if;
         
         -- PROCESO COMBINACIONAL DE ENTRADA
-        if (BUTTON_IN = '0') then
-            futuro <= inactivo;
+        if (BUTTON_IN = '1') then
+            case actual is
+                when inactivo =>
+                    futuro <= filtro;
+                
+                when filtro =>
+                    if (contador_antirebotes = ciclos_antirebotes - 1) then
+                        futuro <= activo;
+                    end if;
+                
+                when activo =>
+                    futuro <= espera;
+                
+                when espera =>
+                    futuro <= espera;
+            end case;
         else
-            futuro <= activo;
+            futuro <= inactivo;
         end if;
     end process;
 
