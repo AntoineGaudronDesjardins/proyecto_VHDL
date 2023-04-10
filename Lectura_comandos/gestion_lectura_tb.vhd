@@ -5,16 +5,16 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulaci�n no tiene)
+-- ENTIDAD     (entradas/salidas, el fichero de simulaci?n no tiene)
 -- **********************************************************************
 ENTITY test_gestor_lectura IS
 END    test_gestor_lectura;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripci�n de los est�mulos)
+-- ARQUITECTURA   (descripci?n de los est?mulos)
 -- **********************************************************************
 ARCHITECTURE test_gestor_lectura_arq OF test_gestor_lectura IS
-    --Declaraci�n de componentes
+    --Declaraci?n de componentes
     COMPONENT gestor_lectura
         PORT (
             -- ENTRADAS --
@@ -50,7 +50,7 @@ ARCHITECTURE test_gestor_lectura_arq OF test_gestor_lectura IS
 
 BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
-    -- Se crea el componente U1 y se conecta a las se�ales internas de la arquitectura
+    -- Se crea el componente U1 y se conecta a las se?ales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: gestor_lectura PORT MAP(
         FIFO_EMPTY  => FIFO_EMPTY_test,
@@ -78,7 +78,7 @@ BEGIN
 
     tb: PROCESS
     BEGIN
-    	--Inicializaci�n
+    	--Inicializaci?n
         FIFO_EMPTY_test <= '1';
         FIFO_WORD_RD_test <= "00110";
         FINISHED_test <= '0';
