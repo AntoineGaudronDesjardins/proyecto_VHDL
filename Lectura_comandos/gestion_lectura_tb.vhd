@@ -79,31 +79,27 @@ BEGIN
     tb: PROCESS
     BEGIN
     	--Inicializaci?n
+        FIFO_EMPTY_test <= '1';
+        FINISHED_test <= '0';
+
+        WAIT FOR 3*ciclo;
+        
         FIFO_EMPTY_test <= '0';
         FIFO_WORD_RD_test <= "00110";
-        FINISHED_test <= '0';
         
         WAIT FOR ciclo*8;
         
-        FINISHED_test <= '1';
-        
-        
-        WAIT FOR ciclo;
-        
+        FINISHED_test <= '1';        
+        WAIT FOR ciclo;        
         FINISHED_test <= '0';
-                
-        
-        WAIT FOR ciclo;
         FIFO_WORD_RD_test <= "11110";
         
-        WAIT FOR ciclo*15;
+        WAIT FOR ciclo*16;
         
         FINISHED_test <= '1';
-        
-        
-        WAIT FOR ciclo;
-        
+        WAIT FOR ciclo;        
         FINISHED_test <= '0';
+
         WAIT;
 	
     END PROCESS tb;

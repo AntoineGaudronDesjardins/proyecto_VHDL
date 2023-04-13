@@ -70,23 +70,20 @@ BEGIN
 
     tb: PROCESS
     BEGIN
-        --Inicializaci�n
+        -- Inicializaci�n
         BUTTON_1_test <= '0';
         BUTTON_2_test <= '0';
         
         wait for 10 ms;
         
+        -- Este pulso no es detectado por ser inferior al 40ms minimo del filtro antirebotes
         BUTTON_1_test <= '1'; wait for 20 ms;
         BUTTON_1_test <= '0';
 
         wait for 10 ms;
         
-        BUTTON_1_test <= '1'; wait for 1 sec;
-        BUTTON_1_test <= '0';
-
-        wait for 3 sec;
-        
-        BUTTON_2_test <= '1'; wait for 50 ms;
+        -- Este pulso si es detectado
+        BUTTON_2_test <= '1'; wait for 80 ms;
         BUTTON_2_test <= '0';
         
         wait;
