@@ -56,7 +56,7 @@ BEGIN
     END PROCESS;
     
     -- PROCESO COMBINACIONAL
-    PROCESS (actual, SENTIDO, START, contador)
+    PROCESS (actual, contador, SENTIDO, START, CICLOS)
     BEGIN
         CASE actual IS
 
