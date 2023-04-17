@@ -72,7 +72,7 @@ BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
     GenReset: PROCESS
     BEGIN
-        RESET_test <= '1';     WAIT FOR periodo;     -- Nos situamos en el flanco de subida del reloj
+        RESET_test <= '1';     WAIT FOR periodo*3/4;
         RESET_test <= '0';     WAIT;
     END PROCESS GenReset;
 

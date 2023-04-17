@@ -58,7 +58,7 @@ architecture arch_fifo_tb of fifo_tb is
 begin
 
     CLK_test    <= not CLK_test after periodo/2;
-    RESET_test  <= '1', '0' after periodo;
+    RESET_test  <= '1', '0' after periodo*3/4;
     
     fifo_inst : fifo
         port map(

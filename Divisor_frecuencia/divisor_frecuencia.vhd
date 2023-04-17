@@ -21,21 +21,19 @@ architecture arch_divisor_frecuencia of divisor_frecuencia is
     
 begin
 
-    process (CLK)
+    process (CLK, RESET)
     begin
-        if (rising_edge(CLK)) then
-            -- RESET SINCRONO A NIVEL ALTO
-            if (RESET = '1') then
+        -- RESET ASINCRONO A NIVEL ALTO
+        if (RESET = '1') then
+            contador <= 0;
+            CLK_SLOW <= '0';
+        elsif (rising_edge(CLK)) then
+            if (contador = N_MAX - 1) then
+                CLK_SLOW <= '1';
                 contador <= 0;
-                CLK_SLOW <= '0';
             else
-                if (contador = N_MAX - 1) then
-                    CLK_SLOW <= '1';
-                    contador <= 0;
-                else
-                    CLK_SLOW <= '0';
-                    contador <= contador + 1;
-                end if;
+                CLK_SLOW <= '0';
+                contador <= contador + 1;
             end if;
         end if;
     end process;

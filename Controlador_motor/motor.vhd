@@ -29,29 +29,27 @@ ARCHITECTURE arch_motor_stepper OF motor_stepper IS
 BEGIN
 
     -- PROCESO DE SINCRONIZACION
-    PROCESS (CLK_SLOW)
+    PROCESS (CLK_SLOW, RESET)
     BEGIN
-        IF (rising_edge(CLK_SLOW)) THEN
-            -- RESET SINCRONO A NIVEL ALTO
-            IF (RESET = '1') THEN
-                actual <= reposo;
-                contador <= 0;
-            ELSE
-                -- ACTUALIZACION DEL ESTADO ACTUAL (estado y contador)
-                actual <= futuro;
-                IF (SENTIDO = '1') THEN
-                    IF (actual = blueorange) THEN
-                        contador <= contador + 1;
-                    END IF;
-                ELSE
-                    IF (actual = orange) THEN
-                        contador <= contador + 1;
-                    END IF;
+        -- RESET ASINCRONO A NIVEL ALTO
+        IF (RESET = '1') THEN
+            actual <= reposo;
+            contador <= 0;
+        ELSIF (rising_edge(CLK_SLOW)) THEN
+            -- ACTUALIZACION DEL ESTADO ACTUAL (estado y contador)
+            actual <= futuro;
+            IF (SENTIDO = '1') THEN
+                IF (actual = blueorange) THEN
+                    contador <= contador + 1;
                 END IF;
-                IF (actual = reposo) THEN
-                	contador <= 0;
-                END IF;	
+            ELSE
+                IF (actual = orange) THEN
+                    contador <= contador + 1;
+                END IF;
             END IF;
+            IF (actual = reposo) THEN
+                contador <= 0;
+            END IF;	
         END IF;
     END PROCESS;
     

@@ -30,16 +30,14 @@ architecture arch_gestor_lectura of gestor_lectura is
 begin
 
     -- PROCESO DE SINCRONIZACION
-    process (CLK)
+    process (CLK, RESET)
     begin
-        if (rising_edge(CLK)) then
-            -- RESET SINCRONO A NIVEL ALTO
-            if (RESET = '1') then
-                actual <= idle;
-            else
-                actual <= futuro;
-            end if;
-           end if;
+        -- RESET ASINCRONO A NIVEL ALTO
+        if (RESET = '1') then
+            actual <= idle;
+        elsif (rising_edge(CLK)) then
+            actual <= futuro;
+        end if;
     end process;
     
     -- PROCESO COMBINACIONAL

@@ -48,7 +48,6 @@ architecture arch_sistema of sistema is
     end component;
     signal BUTTON_OUT_1 : std_logic;
     signal BUTTON_OUT_2 : std_logic;
-    signal RESET        : std_logic;
 
 
     -- Importacion del componente gestor_escritura
@@ -162,26 +161,13 @@ architecture arch_sistema of sistema is
 begin
 
     -- ======================================================================================
-    -- Creacion y conexion de la instancia del componente antirebotes para el boton de RESET
-    -- ======================================================================================
-    debouncing_inst: debouncing
-        port map(
-            -- ENTRADAS --
-            CLK         => CLK,
-            RESET       => RESET,
-            BUTTON_IN   => BUTTON_RESET,
-            -- SALIDAS --
-            BUTTON_OUT  => RESET
-        );
-
-    -- ======================================================================================
     -- Creacion y conexion de la instancia del componente antirebotes para el boton 1
     -- ======================================================================================
     debouncing_inst1: debouncing
         port map(
             -- ENTRADAS --
             CLK         => CLK,
-            RESET       => RESET,
+            RESET       => BUTTON_RESET,
             BUTTON_IN   => BUTTON_1,
             -- SALIDAS --
             BUTTON_OUT  => BUTTON_OUT_1
@@ -194,7 +180,7 @@ begin
         port map(
             -- ENTRADAS --
             CLK         => CLK,
-            RESET       => RESET,
+            RESET       => BUTTON_RESET,
             BUTTON_IN   => BUTTON_2,
             -- SALIDAS --
             BUTTON_OUT  => BUTTON_OUT_2
@@ -207,7 +193,7 @@ begin
         port map(
             -- ENTRADAS --
             CLK          => CLK,
-            RESET        => RESET,
+            RESET        => BUTTON_RESET,
             BUTTON_1     => BUTTON_OUT_1,
             BUTTON_2     => BUTTON_OUT_2,
             FIFO_FULL    => FIFO_FULL,
@@ -224,7 +210,7 @@ begin
         port map(
             -- ENTRADAS --
             CLK          => CLK,
-            RESET        => RESET,
+            RESET        => BUTTON_RESET,
             WRITE_FIFO   => WRITE_FIFO,
             READ_FIFO    => READ_FIFO,
             FIFO_WORD_WR => WORD_FIFO_WR,
@@ -242,7 +228,7 @@ begin
             -- ENTRADAS --
             FIFO_EMPTY   => FIFO_EMPTY,
             FIFO_WORD_RD => FIFO_WORD_RD,
-            RESET        => RESET,
+            RESET        => BUTTON_RESET,
             CLK          => CLK,
             FINISHED     => FINISHED,
             -- SALIDAS --
@@ -259,7 +245,7 @@ begin
         port map(
             -- ENTRADAS --
             CLK      => CLK,
-            RESET    => RESET,
+            RESET    => BUTTON_RESET,
             -- SALIDAS --
             CLK_SLOW => CLK_SLOW
         );
@@ -271,7 +257,7 @@ begin
         port map(
             -- ENTRADAS --
             CLK_SLOW  => CLK_SLOW,
-            RESET     => RESET,
+            RESET     => BUTTON_RESET,
             SENTIDO   => SENTIDO,
             CICLOS    => CICLOS,
             START     => START,

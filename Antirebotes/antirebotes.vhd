@@ -27,21 +27,19 @@ architecture arch_debouncing of debouncing is
 begin
 
     -- PROCESO DE SINCRONIZACION
-    process (CLK)
+    process (CLK, RESET)
     begin
-        if (rising_edge(CLK)) then
-            -- RESET SINCRONO A NIVEL ALTO
-            if (RESET = '1') then
-                contador_antirebotes <= 0;
-                actual <= inactivo;
+        -- RESET ASINCRONO A NIVEL ALTO
+        if (RESET = '1') then
+            contador_antirebotes <= 0;
+            actual <= inactivo;
+        elsif (rising_edge(CLK)) then
+            -- ACTUALIZACION DEL ESTADO ACTUAL (estado y contador)
+            actual <= futuro;
+            if (futuro = filtro) then
+                contador_antirebotes <= contador_antirebotes + 1;
             else
-                -- ACTUALIZACION DEL ESTADO ACTUAL (estado y contador)
-                actual <= futuro;
-                if (futuro = filtro) then
-                    contador_antirebotes <= contador_antirebotes + 1;
-                else
-                    contador_antirebotes <= 0;
-                end if;
+                contador_antirebotes <= 0;
             end if;
         end if;
     end process;
