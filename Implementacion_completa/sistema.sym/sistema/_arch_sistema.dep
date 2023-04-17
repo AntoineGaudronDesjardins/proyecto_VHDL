@@ -1,3 +1,9 @@
+.srcmotor_steppermotor.vhd
+.srcdivisor_frecuenciadivisor_frecuencia.vhd
+.srcgestor_lecturagestion_lectura.vhd
+.srcfifofifo.vhd
+.srcgestor_escrituragestion_escritura.vhd
+.srcdebouncingantirebotes.vhd
 ieeevarstd_logic_arithieee.sym/std_logic_arith/prim.var
 ieeesrcstd_logic_arithstdlogicarith.vhd
 ieeevarstd_logic_unsignedieee.sym/std_logic_unsigned/prim.var

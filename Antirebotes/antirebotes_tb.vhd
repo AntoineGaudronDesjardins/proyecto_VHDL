@@ -5,16 +5,16 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulación no tiene)
+-- ENTIDAD     (entradas/salidas, el fichero de simulaciï¿½n no tiene)
 -- **********************************************************************
 ENTITY test_antirebotes IS
 END    test_antirebotes;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripción de los estímulos)
+-- ARQUITECTURA   (descripciï¿½n de los estï¿½mulos)
 -- **********************************************************************
 ARCHITECTURE test_antirebotes_arq OF test_antirebotes IS
-    --Declaración de componentes
+    --Declaraciï¿½n de componentes
     COMPONENT debouncing
     PORT (
         -- ENTRADAS --
@@ -41,7 +41,7 @@ ARCHITECTURE test_antirebotes_arq OF test_antirebotes IS
 
 BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
-    -- Se crea el componente U1 y se conecta a las señales internas de la arquitectura
+    -- Se crea el componente U1 y se conecta a las seï¿½ales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: debouncing PORT MAP(
         CLK 		=> CLK_test,
@@ -58,13 +58,13 @@ BEGIN
 
     GenReset: PROCESS
     BEGIN
-        RESET_test <= '1';     WAIT FOR ciclo;     -- Nos situamos en el flanco de subida del reloj
+        RESET_test <= '1';     WAIT FOR ciclo*3/4;
         RESET_test <= '0';     WAIT;
     END PROCESS GenReset;
 
     tb: PROCESS
     BEGIN
-    	--Inicialización
+    	--Inicializaciï¿½n
         BUTTON_IN_test <= '0';
         
         WAIT FOR ciclo*3;

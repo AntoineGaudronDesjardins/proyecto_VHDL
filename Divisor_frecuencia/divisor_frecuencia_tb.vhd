@@ -5,35 +5,35 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 -- **********************************************************************
--- ENTIDAD     (entradas/salidas, el fichero de simulaci�n no tiene)
+-- ENTIDAD (entradas/salidas, el fichero de simulaci�n no tiene)
 -- **********************************************************************
 ENTITY test_divisor_frecuencia IS
 END    test_divisor_frecuencia;
 
 -- **********************************************************************
--- ARQUITECTURA   (descripci�n de los est�mulos)
+-- ARQUITECTURA (descripci�n de los est�mulos)
 -- **********************************************************************
 ARCHITECTURE test_divisor_frecuencia_arq OF test_divisor_frecuencia IS
     --Declaraci�n de componentes
     COMPONENT divisor_frecuencia
         GENERIC (
-            N_MAX : integer := 50000000
+            N_MAX    : integer := 50000000
         );
         PORT (
             -- ENTRADAS --
-            CLK     : in std_logic;
-            RESET   : in std_logic;
+            CLK      : in std_logic;
+            RESET    : in std_logic;
             -- SALIDAS --
             CLK_SLOW : out std_logic
         );
     END COMPONENT;
 
     -- Entradas
-    SIGNAL CLK_test		: std_logic;
-    SIGNAL RESET_test 		: std_logic;
+    SIGNAL CLK_test      : std_logic;
+    SIGNAL RESET_test    : std_logic;
     
     -- Salida
-    SIGNAL CLK_SLOW_test  	: std_logic;
+    SIGNAL CLK_SLOW_test : std_logic;
 
     -- Internas
     CONSTANT ciclo : time := 10 ns;  -- 100Mhz
@@ -44,12 +44,12 @@ BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: divisor_frecuencia
         GENERIC MAP(
-            N_MAX => 5      -- Es mas visible para la simulaci�n
+            N_MAX    => 5      -- Es mas visible para la simulaci�n
         )
         PORT MAP(
-            CLK 		=> CLK_test,
-            RESET		=> RESET_test,
-            CLK_SLOW	=> CLK_SLOW_test
+            CLK      => CLK_test,
+            RESET    => RESET_test,
+            CLK_SLOW => CLK_SLOW_test
         );
 
     GenCLK: PROCESS
@@ -60,8 +60,8 @@ BEGIN
 
     GenReset: PROCESS
     BEGIN
-        RESET_test <= '1';     WAIT FOR ciclo * 3/2;     -- Nos situamos en el flanco de bajada del reloj
+        RESET_test <= '1';     WAIT FOR ciclo*3/4;
         RESET_test <= '0';     WAIT;
     END PROCESS GenReset;
-	
+    
 END test_divisor_frecuencia_arq;
