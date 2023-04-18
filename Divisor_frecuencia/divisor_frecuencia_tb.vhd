@@ -17,7 +17,7 @@ ARCHITECTURE test_divisor_frecuencia_arq OF test_divisor_frecuencia IS
     --Declaraci�n de componentes
     COMPONENT divisor_frecuencia
         GENERIC (
-            N_MAX    : integer := 50000000
+            DIVISOR    : integer := 50000000
         );
         PORT (
             -- ENTRADAS --
@@ -44,7 +44,7 @@ BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: divisor_frecuencia
         GENERIC MAP(
-            N_MAX    => 5      -- Es mas visible para la simulaci�n
+            DIVISOR    => 5      -- Es mas visible para la simulaci�n
         )
         PORT MAP(
             CLK      => CLK_test,

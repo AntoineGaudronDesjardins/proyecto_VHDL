@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity debouncing is
     generic (
-        CICLOS_FILTER : integer := 5
+        CICLOS_FILTRO : integer := 5
     );
     port (
         -- ENTRADAS --
@@ -20,9 +20,7 @@ architecture arch_debouncing of debouncing is
     -- CODIGO DEL ALUMNO --
     type ESTADOS is (inactivo, filtro, activo, espera);
     signal actual, futuro : ESTADOS := inactivo;
-    
-    signal ciclos_antirebotes   : integer := CICLOS_FILTER;
-    signal contador_antirebotes : integer := 0;
+    signal contador, contador_futuro : integer := 0;
 
 begin
 
@@ -31,21 +29,17 @@ begin
     begin
         -- RESET ASINCRONO A NIVEL ALTO
         if (RESET = '1') then
-            contador_antirebotes <= 0;
+            contador <= 0;
             actual <= inactivo;
         elsif (rising_edge(CLK)) then
             -- ACTUALIZACION DEL ESTADO ACTUAL (estado y contador)
+            contador <= contador_futuro;
             actual <= futuro;
-            if (futuro = filtro) then
-                contador_antirebotes <= contador_antirebotes + 1;
-            else
-                contador_antirebotes <= 0;
-            end if;
         end if;
     end process;
     
     -- PROCESO COMBINACIONAL
-    process (BUTTON_IN, actual, contador_antirebotes)
+    process (BUTTON_IN, actual, contador)
     begin
         -- PROCESO COMBINACIONAL DE SALIDA
         if (actual = activo) then
@@ -59,10 +53,14 @@ begin
             case actual is
                 when inactivo =>
                     futuro <= filtro;
+                    contador_futuro <= 0;
                 
                 when filtro =>
-                    if (contador_antirebotes = ciclos_antirebotes - 1) then
+                    if (contador+1 = CICLOS_FILTRO-1) then
+                        contador_futuro <= 0;
                         futuro <= activo;
+                    else
+                        contador_futuro <= contador + 1;
                     end if;
                 
                 when activo =>
@@ -72,6 +70,7 @@ begin
                     futuro <= espera;
             end case;
         else
+            contador_futuro <= 0;
             futuro <= inactivo;
         end if;
     end process;

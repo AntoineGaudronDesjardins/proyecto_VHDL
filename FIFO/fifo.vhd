@@ -31,63 +31,68 @@ architecture arch_fifo of fifo is
     signal READ_POINTER  : integer := 0;
     signal FIFO_COUNT    : integer := 0;
 
+    signal WRITE_POINTER_futuro : integer := 0;
+    signal READ_POINTER_futuro  : integer := 0;
+    signal FIFO_COUNT_futuro    : integer := 0;
+
 begin
 
+    -- PROCESO DE SINCRONIZACION
     process(RESET, CLK)
     begin
-        
         if (RESET='1') then
-
-            FIFO_DATA     <= (others => (others => '0'));
             WRITE_POINTER <= 0;
             READ_POINTER  <= 0;
-            FIFO_COUNT    <= 0;            
-            
-            FIFO_EMPTY    <= '1';
-            FIFO_FULL     <= '0';
+            FIFO_COUNT    <= 0;
 
         elsif (rising_edge(CLK)) then
-                
-            if (WRITE_FIFO='1') then
-                -- write --
-                FIFO_DATA(WRITE_POINTER) <= FIFO_WORD_WR;
-                
-                -- actualize COUNT and POINTER --
-                FIFO_COUNT <= FIFO_COUNT + 1;
-                if (WRITE_POINTER = FIFO_MAX-1) then
-                    WRITE_POINTER <= 0;
-                else
-                    WRITE_POINTER <= WRITE_POINTER + 1;
-                end if;
-                
-                -- update state --
-                FIFO_EMPTY <= '0';
-                if (FIFO_COUNT + 1 = FIFO_MAX) then
-                    FIFO_FULL <= '1';
-                end if;
-            end if;
-        
-            if (READ_FIFO='1') then
-                -- read --
-                FIFO_WORD_RD <= FIFO_DATA(READ_POINTER);
-                
-                -- actualize COUNT and POINTER --
-                FIFO_COUNT <= FIFO_COUNT - 1;
-                if (READ_POINTER = FIFO_MAX-1) then
-                    READ_POINTER <= 0;
-                else
-                    READ_POINTER <= READ_POINTER + 1;
-                end if;
-                
-                -- update state --
-                FIFO_FULL <= '0';
-                if (FIFO_COUNT - 1 = 0) then
-                    FIFO_EMPTY <= '1';
-                end if;
-            end if;
-        
+            WRITE_POINTER <= WRITE_POINTER_futuro;
+            READ_POINTER  <= READ_POINTER_futuro;
+            FIFO_COUNT    <= FIFO_COUNT_futuro;
+
         end if;
+    end process;
     
+    -- PROCESO COMBINACIONAL
+    process(WRITE_FIFO, READ_FIFO, FIFO_WORD_WR, WRITE_POINTER, READ_POINTER, FIFO_COUNT)
+    begin
+        if (WRITE_FIFO='1') then
+            -- write --
+            FIFO_DATA(WRITE_POINTER) <= FIFO_WORD_WR;
+            
+            -- actualize COUNT and POINTER --
+            FIFO_COUNT_futuro <= FIFO_COUNT + 1;
+            if (WRITE_POINTER = FIFO_MAX-1) then
+                WRITE_POINTER_futuro <= 0;
+            else
+                WRITE_POINTER_futuro <= WRITE_POINTER + 1;
+            end if;
+            
+            -- update state --
+            FIFO_EMPTY <= '0';
+            if (FIFO_COUNT + 1 = FIFO_MAX) then
+                FIFO_FULL <= '1';
+            end if;
+        end if;
+
+        if (READ_FIFO='1') then
+            -- read --
+            FIFO_WORD_RD <= FIFO_DATA(READ_POINTER);
+            
+            -- actualize COUNT and POINTER --
+            FIFO_COUNT_futuro <= FIFO_COUNT - 1;
+            if (READ_POINTER = FIFO_MAX-1) then
+                READ_POINTER_futuro <= 0;
+            else
+                READ_POINTER_futuro <= READ_POINTER + 1;
+            end if;
+            
+            -- update state --
+            FIFO_FULL <= '0';
+            if (FIFO_COUNT - 1 = 0) then
+                FIFO_EMPTY <= '1';
+            end if;
+        end if;
     end process;
 
 end architecture;

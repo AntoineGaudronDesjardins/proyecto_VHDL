@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity divisor_frecuencia is
     generic(
-    	N_MAX : integer := 50000000
+    	DIVISOR : integer := 50000000
     );
     port (
         -- ENTRADAS --
@@ -17,24 +17,31 @@ end entity;
 architecture arch_divisor_frecuencia of divisor_frecuencia is
 
     -- CODIGO DEL ALUMNO --
-    signal contador : integer range 0 to N_MAX - 1 := 0;
+    signal contador        : integer range 0 to DIVISOR - 1 := 0;
+    signal contador_futuro : integer range 0 to DIVISOR - 1 := 0;
     
 begin
 
+    -- PROCESO DE SINCRONIZACION
     process (CLK, RESET)
     begin
         -- RESET ASINCRONO A NIVEL ALTO
         if (RESET = '1') then
             contador <= 0;
-            CLK_SLOW <= '0';
         elsif (rising_edge(CLK)) then
-            if (contador = N_MAX - 1) then
-                CLK_SLOW <= '1';
-                contador <= 0;
-            else
-                CLK_SLOW <= '0';
-                contador <= contador + 1;
-            end if;
+            contador <= contador_futuro;
+        end if;
+    end process;
+    
+    -- PROCESO COMBINACIONAL
+    process (contador)
+    begin
+        if (contador = DIVISOR - 1) then
+            contador_futuro <= 0;
+            CLK_SLOW <= '1';
+        else
+            contador_futuro <= contador + 1;
+            CLK_SLOW <= '0';
         end if;
     end process;
 
