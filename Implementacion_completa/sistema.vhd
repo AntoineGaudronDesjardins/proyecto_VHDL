@@ -4,6 +4,10 @@ use ieee.std_logic_unsigned.all;
 use ieee.numeric_std.all;
 
 entity sistema is
+    generic (
+        -- se desea una frecuencia de CLK_SLOW de 100Hz (CLK es 100MHz en el micro)
+        DIVISOR      : integer := 1000000
+    );
     port (
         -- ENTRADAS --
         CLK          : in std_logic;
@@ -21,21 +25,20 @@ architecture arch_sistema of sistema is
 
     -- CODIGO DEL ALUMNO --
     type DNI is array(7 downto 0) of integer range 1 to 10;
-    constant D : DNI := (10, 1, 1, 2, 3, 5, 8, 1);
+    constant D : DNI := (1, 1, 1, 2, 3, 5, 8, 1);
 
     constant WORD_SIZE     : integer := (D(1) mod 5) + 3;
     constant WORD_FIFO     : integer := D(7) + 5;
     constant FIFO_MAX      : integer := D(0) + 4;
     constant CICLOS_SIZE   : integer := (D(1) mod 5) + 2;
-    -- se desea una frecuencia de CLK_SLOW de 100Hz (CLK es 100MHz en el micro)
-    constant N_MAX         : integer := 1000000;
-    -- el tiempo del filtro es (D3+1)*10ms : corresponde a (D3+1)*1000000 ciclos del reloj
-    constant CICLOS_FILTER : integer := ((D(3) mod 5) + 1) * 1000000;
+    -- El tiempo del filtro es (D3+1)*10ms : corresponde a (D3+1)*DIVISOR ciclos del reloj
+    -- en la configuracion por defecto, es decir (D3+1) ciclo de CLK_SLOW.
+    constant CICLOS_FILTRO : integer := ((D(3) mod 5) + 1) * DIVISOR;
 
     -- Importacion del componente debouncing
     component debouncing
         generic (
-            CICLOS_FILTER : integer := CICLOS_FILTER
+            CICLOS_FILTRO : integer := CICLOS_FILTRO
         );
         port (
             -- ENTRADAS --
@@ -127,7 +130,7 @@ architecture arch_sistema of sistema is
     -- Importacion del componente divisor_frecuencia
     component divisor_frecuencia
         generic(
-            N_MAX : integer := N_MAX
+            DIVISOR : integer := DIVISOR
         );
         port (
             -- ENTRADAS --

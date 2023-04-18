@@ -23,8 +23,8 @@ ARCHITECTURE arch_motor_stepper OF motor_stepper IS
 
     -- CODIGO DEL ALUMNO --
     TYPE ESTADOS IS (reposo, orange, orangeyellow, yellow, yellowpink, pink, pinkblue, blue, blueorange, final);
-    SIGNAL actual, futuro : ESTADOS := reposo;
-    SIGNAL contador : INTEGER := 0;
+    SIGNAL actual, futuro            : ESTADOS := reposo;
+    SIGNAL contador, contador_futuro : INTEGER := 0;
      
 BEGIN
 
@@ -33,23 +33,12 @@ BEGIN
     BEGIN
         -- RESET ASINCRONO A NIVEL ALTO
         IF (RESET = '1') THEN
-            actual <= reposo;
+            actual   <= reposo;
             contador <= 0;
         ELSIF (rising_edge(CLK_SLOW)) THEN
             -- ACTUALIZACION DEL ESTADO ACTUAL (estado y contador)
-            actual <= futuro;
-            IF (SENTIDO = '1') THEN
-                IF (actual = blueorange) THEN
-                    contador <= contador + 1;
-                END IF;
-            ELSE
-                IF (actual = orange) THEN
-                    contador <= contador + 1;
-                END IF;
-            END IF;
-            IF (actual = reposo) THEN
-                contador <= 0;
-            END IF;	
+            actual   <= futuro;
+            contador <= contador_futuro;
         END IF;
     END PROCESS;
     
@@ -61,6 +50,7 @@ BEGIN
             WHEN reposo =>
                 MOTOR_OUT <= "0000";
                 FINISHED <= '0';
+                contador_futuro <= 0;
                 IF (START = '1') THEN
                     IF(SENTIDO = '1') THEN
                         futuro <= orange;
@@ -74,6 +64,7 @@ BEGIN
                 IF (SENTIDO = '1') THEN
                     futuro <= orangeyellow;
                 ELSE
+                    contador_futuro <= contador + 1;
                     IF (contador = CICLOS-1) THEN
                         futuro <= final;
                     ELSE
@@ -132,6 +123,7 @@ BEGIN
             WHEN blueorange =>
                 MOTOR_OUT <= "1001";
                 IF (SENTIDO = '1') THEN
+                    contador_futuro <= contador + 1;
                     IF (contador = CICLOS-1) THEN
                         futuro <= final;
                     ELSE    

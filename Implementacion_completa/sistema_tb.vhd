@@ -16,17 +16,23 @@ END    test_sistema;
 ARCHITECTURE test_sistema_arq OF test_sistema IS
     --Declaraci�n de componentes
     COMPONENT sistema
-    PORT (
-        -- ENTRADAS --
-        CLK          : in std_logic;
-        BUTTON_1     : in std_logic;
-        BUTTON_2     : in std_logic;
-        BUTTON_RESET : in std_logic; -- Este es el botón de reset
+        GENERIC (
+            -- Para simplificar el testeo el reloj CLK_SLOW sera de de periodo 100ns
+            -- asi el tiempo caracteristico del filtro antirebotes es ((D(3) mod 5) + 1)*100ns
+            -- es decir de 40 ciclos
+            DIVISOR      : integer := 10
+        );
+        PORT (
+            -- ENTRADAS --
+            CLK          : in std_logic;
+            BUTTON_1     : in std_logic;
+            BUTTON_2     : in std_logic;
+            BUTTON_RESET : in std_logic;
 
-        -- SALIDAS --
-        MOTOR_OUT : out std_logic_vector(3 downto 0);
-        LED       : out std_logic
-    );
+            -- SALIDAS --
+            MOTOR_OUT : out std_logic_vector(3 downto 0);
+            LED       : out std_logic
+        );
     END COMPONENT;
 
     -- Entradas
@@ -39,7 +45,6 @@ ARCHITECTURE test_sistema_arq OF test_sistema IS
     SIGNAL MOTOR_OUT_test : std_logic_vector(3 downto 0);
     SIGNAL LED_test       : std_logic;
 
-    
     -- Internas
     constant ciclo : time := 10 ns;  -- 100Mhz
 
@@ -64,7 +69,7 @@ BEGIN
 
     GenReset: process
     begin
-        BUTTON_RESET_test<= '1';     wait for 5 ms;
+        BUTTON_RESET_test<= '1';     wait for ciclo*3/2;
         BUTTON_RESET_test<= '0';     wait;
     end process GenReset;
 
@@ -74,16 +79,42 @@ BEGIN
         BUTTON_1_test <= '0';
         BUTTON_2_test <= '0';
         
-        wait for 10 ms;
+        wait for 3*ciclo;
         
-        -- Este pulso no es detectado por ser inferior al 40ms minimo del filtro antirebotes
-        BUTTON_1_test <= '1'; wait for 20 ms;
+        -- Este pulso no es detectado por ser inferior al 400 ns minimo del filtro antirebotes
+        BUTTON_1_test <= '1'; wait for 20*ciclo;
         BUTTON_1_test <= '0';
 
-        wait for 10 ms;
+        wait for 10*ciclo;
         
-        -- Este pulso si es detectado
-        BUTTON_2_test <= '1'; wait for 80 ms;
+        -- Este pulso si es detectado pero los rebotes son filtrados
+        BUTTON_2_test <= '1'; wait for 30*ciclo;
+        BUTTON_2_test <= '0'; wait for 10*ciclo;
+        BUTTON_2_test <= '1'; wait for 60*ciclo;
+        BUTTON_2_test <= '0';
+
+        wait for 5*ciclo;
+        
+        -- Este pulso hace girar el motor en el sentido contrario y se almacena en cola
+        BUTTON_1_test <= '1'; wait for 30*ciclo;
+        BUTTON_1_test <= '0'; wait for 10*ciclo;
+        BUTTON_1_test <= '1'; wait for 60*ciclo;
+        BUTTON_1_test <= '0';
+
+        wait for 5*ciclo;
+        
+        -- Este pulso hace girar el motor en el sentido contrario y se almacena en cola
+        BUTTON_1_test <= '1'; wait for 30*ciclo;
+        BUTTON_1_test <= '0'; wait for 10*ciclo;
+        BUTTON_1_test <= '1'; wait for 60*ciclo;
+        BUTTON_1_test <= '0';
+
+        wait for 5*ciclo;
+        
+        -- Este pulso debe provocar que la cola este llena
+        BUTTON_2_test <= '1'; wait for 30*ciclo;
+        BUTTON_2_test <= '0'; wait for 10*ciclo;
+        BUTTON_2_test <= '1'; wait for 60*ciclo;
         BUTTON_2_test <= '0';
         
         wait;
