@@ -1,0 +1,24 @@
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 2b7ea25d239041b58375e86d38357e0d --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot test_sistema_behav xil_defaultlib.test_sistema -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling architecture arch_debouncing of entity xil_defaultlib.debouncing [\debouncing(ciclos_filtro=40)\]
+Compiling architecture arch_gestor_escritura of entity xil_defaultlib.gestor_escritura [\gestor_escritura(word_size=6,wo...]
+Compiling architecture arch_fifo of entity xil_defaultlib.fifo [\fifo(word_size=6,fifo_max=5)\]
+Compiling architecture arch_gestor_lectura of entity xil_defaultlib.gestor_lectura [\gestor_lectura(ciclos_size=5)\]
+Compiling architecture arch_divisor_frecuencia of entity xil_defaultlib.divisor_frecuencia [\divisor_frecuencia(divisor=10)\]
+Compiling architecture arch_motor_stepper of entity xil_defaultlib.motor_stepper [\motor_stepper(ciclos_size=5)\]
+Compiling architecture arch_sistema of entity xil_defaultlib.sistema [\sistema(divisor=10)\]
+Compiling architecture test_sistema_arq of entity xil_defaultlib.test_sistema
+Built simulation snapshot test_sistema_behav

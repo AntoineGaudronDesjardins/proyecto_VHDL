@@ -72,8 +72,10 @@ BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
     GenReset: PROCESS
     BEGIN
-        RESET_test <= '1';     WAIT FOR periodo*3/4;
-        RESET_test <= '0';     WAIT;
+    RESET_test <= '1';     WAIT FOR periodo*3/4;
+    RESET_test <= '0';     WAIT FOR 42*periodo;
+    RESET_test <= '1';     WAIT FOR periodo;
+    RESET_test <= '0';     WAIT;
     END PROCESS GenReset;
 
     -- ///////////////////////////////////////////////////////////////////////////////
@@ -81,7 +83,10 @@ BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
     tb: PROCESS
     BEGIN
-        --Inicializaci�n
+        -- **********************************************************************
+        -- Escenario de comportamiento normal
+        -- **********************************************************************
+        -- Inicializaci�n
         SENTIDO_test <= '0';
         CICLOS_test  <= "0010";    -- 2 ciclos
         START_test   <= '0';
@@ -91,10 +96,23 @@ BEGIN
         START_test   <= '1';
         WAIT FOR periodo;
         START_test   <= '0';
-        
+
+        -- Pruebas de inisensibilidad a variaciones una vez la secuencia iniciada
+        WAIT FOR 10*periodo;
+        SENTIDO_test <= '1';
+        CICLOS_test  <= "1001";
+        START_test <= '1';
+        WAIT FOR periodo;
+        START_test <= '0';
+        SENTIDO_test <= '0';
+        CICLOS_test  <= "0001";
+
         -- espera el final de los ciclos del motor y la senal de finished mas 2 periodos
-        WAIT FOR (2*8+1 + 2)*periodo;
-        
+        WAIT FOR 8*periodo;
+
+        -- **********************************************************************
+        -- Escenario con interrupcion del RESET
+        -- **********************************************************************
         SENTIDO_test <= '1';       -- cambio de sentido
         CICLOS_test  <= "0011";    -- 3 ciclos
 

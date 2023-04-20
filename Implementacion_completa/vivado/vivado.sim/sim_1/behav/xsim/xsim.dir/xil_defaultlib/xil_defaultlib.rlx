@@ -1,0 +1,12 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd,1681936354,vhdl,,,,debouncing,,,,,,,,
+C:/Users/antoi/Desktop/Codigos/Implementacion_completa/divisor_frecuencia.vhd,1681773209,vhdl,,,,divisor_frecuencia,,,,,,,,
+C:/Users/antoi/Desktop/Codigos/Implementacion_completa/fifo.vhd,1681944663,vhdl,,,,fifo,,,,,,,,
+C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd,1681936519,vhdl,,,,gestor_escritura,,,,,,,,
+C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd,1681936655,vhdl,,,,gestor_lectura,,,,,,,,
+C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd,1681940218,vhdl,,,,motor_stepper,,,,,,,,
+C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd,1681937388,vhdl,,,,sistema,,,,,,,,
+C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema_tb.vhd,1681944978,vhdl,,,,test_sistema,,,,,,,,

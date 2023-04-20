@@ -1,0 +1,13 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../antirebotes.vhd" \
+"../../../../../divisor_frecuencia.vhd" \
+"../../../../../fifo.vhd" \
+"../../../../../gestion_escritura.vhd" \
+"../../../../../gestion_lectura.vhd" \
+"../../../../../motor.vhd" \
+"../../../../../sistema.vhd" \
+"../../../../../sistema_tb.vhd" \
+
+# Do not sort compile order
+nosort

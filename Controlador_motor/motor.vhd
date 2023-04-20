@@ -25,6 +25,9 @@ ARCHITECTURE arch_motor_stepper OF motor_stepper IS
     TYPE ESTADOS IS (reposo, orange, orangeyellow, yellow, yellowpink, pink, pinkblue, blue, blueorange, final);
     SIGNAL actual, futuro            : ESTADOS := reposo;
     SIGNAL contador, contador_futuro : INTEGER := 0;
+
+    SIGNAL CICLOS_SINC  : std_logic_vector(CICLOS_SIZE-1 downto 0) := CICLOS;
+    SIGNAL SENTIDO_SINC : std_logic := SENTIDO;
      
 BEGIN
 
@@ -33,7 +36,7 @@ BEGIN
     BEGIN
         -- RESET ASINCRONO A NIVEL ALTO
         IF (RESET = '1') THEN
-            actual   <= reposo;
+            actual   <= final;
             contador <= 0;
         ELSIF (rising_edge(CLK_SLOW)) THEN
             -- ACTUALIZACION DEL ESTADO ACTUAL (estado y contador)
@@ -43,7 +46,7 @@ BEGIN
     END PROCESS;
     
     -- PROCESO COMBINACIONAL
-    PROCESS (actual, contador, SENTIDO, START, CICLOS)
+    PROCESS (actual, contador, START, SENTIDO, SENTIDO_SINC, CICLOS, CICLOS_SINC)
     BEGIN
         CASE actual IS
 
@@ -51,6 +54,8 @@ BEGIN
                 MOTOR_OUT <= "0000";
                 FINISHED <= '0';
                 contador_futuro <= 0;
+                CICLOS_SINC <= CICLOS;
+                SENTIDO_SINC <= SENTIDO;
                 IF (START = '1') THEN
                     IF(SENTIDO = '1') THEN
                         futuro <= orange;
@@ -61,20 +66,21 @@ BEGIN
             
             WHEN orange =>
                 MOTOR_OUT <= "1000";
-                IF (SENTIDO = '1') THEN
+                IF (SENTIDO_SINC = '1') THEN
                     futuro <= orangeyellow;
                 ELSE
-                    contador_futuro <= contador + 1;
-                    IF (contador = CICLOS-1) THEN
+                    IF (contador = CICLOS_SINC-1) THEN
+                        contador_futuro <= 0;
                         futuro <= final;
                     ELSE
+                        contador_futuro <= contador + 1;
                         futuro <= blueorange;
                     END IF;
                 END IF;
             
             WHEN orangeyellow =>
                 MOTOR_OUT <= "1100";
-                IF (SENTIDO = '1') THEN
+                IF (SENTIDO_SINC = '1') THEN
                     futuro <= yellow;
                 ELSE
                     futuro <= orange;
@@ -82,7 +88,7 @@ BEGIN
                 
             WHEN yellow =>        
                 MOTOR_OUT <= "0100";
-                IF (SENTIDO = '1') THEN
+                IF (SENTIDO_SINC = '1') THEN
                     futuro <= yellowpink;
                 ELSE
                     futuro <= orangeyellow;
@@ -90,7 +96,7 @@ BEGIN
             
             WHEN yellowpink =>
                 MOTOR_OUT <= "0110";
-                IF (SENTIDO = '1') THEN
+                IF (SENTIDO_SINC = '1') THEN
                     futuro <= pink;
                 ELSE
                     futuro <= yellow;
@@ -98,7 +104,7 @@ BEGIN
                         
             WHEN pink =>        
                 MOTOR_OUT <= "0010";
-                IF (SENTIDO = '1') THEN
+                IF (SENTIDO_SINC = '1') THEN
                     futuro <= pinkblue;
                 ELSE
                     futuro <= yellowpink;
@@ -106,7 +112,7 @@ BEGIN
             
             WHEN pinkblue =>
                 MOTOR_OUT <= "0011";
-                IF (SENTIDO = '1') THEN
+                IF (SENTIDO_SINC = '1') THEN
                     futuro <= blue;
                 ELSE
                     futuro <= pink;
@@ -114,7 +120,7 @@ BEGIN
             
             WHEN blue =>
                 MOTOR_OUT <= "0001";
-                IF (SENTIDO = '1') THEN
+                IF (SENTIDO_SINC = '1') THEN
                     futuro <= blueorange;
                 ELSE
                     futuro <= pinkblue;
@@ -122,11 +128,12 @@ BEGIN
             
             WHEN blueorange =>
                 MOTOR_OUT <= "1001";
-                IF (SENTIDO = '1') THEN
-                    contador_futuro <= contador + 1;
-                    IF (contador = CICLOS-1) THEN
+                IF (SENTIDO_SINC = '1') THEN
+                    IF (contador = CICLOS_SINC-1) THEN
+                        contador_futuro <= 0;
                         futuro <= final;
-                    ELSE    
+                    ELSE
+                        contador_futuro <= contador + 1;
                         futuro <= orange;
                     END IF;
                 ELSE
@@ -136,10 +143,14 @@ BEGIN
             WHEN final =>
                 MOTOR_OUT <= "0000";
                 FINISHED <= '1';
+                contador_futuro <= 0;
                 futuro <= reposo;
             
             WHEN OTHERS =>
                 MOTOR_OUT <= "0000";
+                FINISHED <= '0';
+                contador_futuro <= 0;
+                futuro <= reposo;
             
         END CASE;
     END PROCESS;

@@ -70,6 +70,8 @@ BEGIN
     GenReset: process
     begin
         BUTTON_RESET_test<= '1';     wait for ciclo*3/2;
+        BUTTON_RESET_test<= '0';     wait for ciclo*750;
+        BUTTON_RESET_test<= '1';     wait for ciclo;
         BUTTON_RESET_test<= '0';     wait;
     end process GenReset;
 
@@ -96,23 +98,44 @@ BEGIN
         wait for 5*ciclo;
         
         -- Este pulso hace girar el motor en el sentido contrario y se almacena en cola
-        BUTTON_1_test <= '1'; wait for 30*ciclo;
-        BUTTON_1_test <= '0'; wait for 10*ciclo;
-        BUTTON_1_test <= '1'; wait for 60*ciclo;
+        BUTTON_1_test <= '1'; wait for 15*ciclo;
+        BUTTON_1_test <= '0'; wait for 5*ciclo;
+        BUTTON_1_test <= '1'; wait for 65*ciclo;
         BUTTON_1_test <= '0';
 
-        wait for 5*ciclo;
+        wait for 10*ciclo;
         
         -- Este pulso hace girar el motor en el sentido contrario y se almacena en cola
-        BUTTON_1_test <= '1'; wait for 30*ciclo;
+        BUTTON_1_test <= '1'; wait for 5*ciclo;
         BUTTON_1_test <= '0'; wait for 10*ciclo;
-        BUTTON_1_test <= '1'; wait for 60*ciclo;
+        BUTTON_1_test <= '1'; wait for 50*ciclo;
         BUTTON_1_test <= '0';
 
         wait for 5*ciclo;
         
-        -- Este pulso debe provocar que la cola este llena
-        BUTTON_2_test <= '1'; wait for 30*ciclo;
+        -- Estos dos pulsos deben provocar que la cola este llena
+        BUTTON_2_test <= '1'; wait for 20*ciclo;
+        BUTTON_2_test <= '0'; wait for 5*ciclo;
+        BUTTON_2_test <= '1'; wait for 40*ciclo;
+        BUTTON_2_test <= '0';
+
+        wait for 10*ciclo;
+
+        BUTTON_2_test <= '1'; wait for 5*ciclo;
+        BUTTON_2_test <= '0'; wait for 10*ciclo;
+        BUTTON_2_test <= '1'; wait for 60*ciclo;
+        BUTTON_2_test <= '0';
+
+        wait for 10*ciclo;
+
+        BUTTON_2_test <= '1'; wait for 10*ciclo;
+        BUTTON_2_test <= '0'; wait for 10*ciclo;
+        BUTTON_2_test <= '1'; wait for 55*ciclo;
+        BUTTON_2_test <= '0';
+
+        wait for 40*ciclo;
+
+        BUTTON_2_test <= '1'; wait for 5*ciclo;
         BUTTON_2_test <= '0'; wait for 10*ciclo;
         BUTTON_2_test <= '1'; wait for 60*ciclo;
         BUTTON_2_test <= '0';
