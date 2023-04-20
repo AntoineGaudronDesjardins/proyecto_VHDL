@@ -16,6 +16,9 @@ END    test_antirebotes;
 ARCHITECTURE test_antirebotes_arq OF test_antirebotes IS
     --Declaraci�n de componentes
     COMPONENT debouncing
+    GENERIC (
+        CICLOS_FILTRO : integer := 5
+    );
     PORT (
         -- ENTRADAS --
         CLK         : IN std_logic;
@@ -64,34 +67,23 @@ BEGIN
 
     tb: PROCESS
     BEGIN
-    	--Inicializaci�n
+    	-- Inicializaci�n
         BUTTON_IN_test <= '0';
-        
+
         WAIT FOR ciclo*3;
         
+        -- Pulso corto : BUTTON_IN se pone a nivel alto 3 ciclos => filtrado
         BUTTON_IN_test <= '1';
-        
         WAIT FOR ciclo*3;
-                
         BUTTON_IN_test <= '0';
         
         WAIT FOR ciclo*3;
 
+        -- Pulso largo : BUTTON_IN se pone a nivel alto 7 ciclos > 5 => pasa la senal durante un ciclo
         BUTTON_IN_test <= '1';
-        
-        WAIT FOR ciclo*30;
-                
+        WAIT FOR ciclo*7;
         BUTTON_IN_test <= '0';
         
-        WAIT FOR ciclo*3;
-
-        BUTTON_IN_test <= '1';
-        
-        WAIT FOR ciclo*10;
-                
-        BUTTON_IN_test <= '0';
-        
-        WAIT FOR ciclo*3;            
         WAIT;
 	
     END PROCESS tb;
