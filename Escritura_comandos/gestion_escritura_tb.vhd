@@ -84,23 +84,26 @@ BEGIN
     -- ///////////////////////////////////////////////////////////////////////////////
     tb: PROCESS
     BEGIN
-        --Inicializaci�n    
+        -- Inicializaci�n    
         BUTTON_1_test <= '0';
         BUTTON_2_test <= '0';
         FIFO_FULL_test <= '1';
         
-        WAIT FOR 2*ciclo;
+        WAIT FOR ciclo;
         
+        -- Testeo de escritura con FIFO_FULL = '1'
         BUTTON_1_test <= '1';    WAIT FOR ciclo;
-        BUTTON_1_test <= '0';    WAIT FOR ciclo*5;
+        BUTTON_1_test <= '0';    WAIT FOR ciclo*2;
         
         FIFO_FULL_test<= '0';
 
+        -- Testeo de escritura 2
         BUTTON_2_test <= '1';    WAIT FOR ciclo;
-        BUTTON_2_test <= '0';    WAIT FOR ciclo*5;
+        BUTTON_2_test <= '0';    WAIT FOR ciclo*4;
         
+        -- Testeo de escritura 1
         BUTTON_1_test <= '1';    WAIT FOR ciclo;
-        BUTTON_1_test <= '0';    WAIT FOR ciclo*5;
+        BUTTON_1_test <= '0';
         
         WAIT;
     

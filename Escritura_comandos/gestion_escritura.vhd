@@ -24,7 +24,7 @@ end entity;
 architecture arch_gestor_escritura of gestor_escritura is
 
     -- CODIGO DEL ALUMNO --
-    type ESTADOS is (reposo, escritura1, escritura2, lleno);
+    type ESTADOS is (reposo, escritura1, escritura2);
     signal actual, futuro : ESTADOS := reposo;
 
     constant WORD_FIFO_BIN : std_logic_vector(WORD_SIZE-2 downto 0) := std_logic_vector(to_unsigned(WORD_FIFO, WORD_SIZE-1));
@@ -55,18 +55,22 @@ begin
                         futuro <= escritura1;
                     elsif (BUTTON_2 = '1') then
                         futuro <= escritura2;
+                    else
+                        futuro <= reposo;
                     end if;
+                else
+                    futuro <= reposo;
                 end if;
             
             when escritura1 =>
                 WRITE_FIFO <= '1';
-                futuro <= reposo;
                 WORD_FIFO_WR <= '0' & WORD_FIFO_BIN;
+                futuro <= reposo;
             
             when escritura2 =>
                 WRITE_FIFO <= '1';
-                futuro <= reposo;
                 WORD_FIFO_WR <= '1' & WORD_FIFO_BIN;
+                futuro <= reposo;
             
             when others =>
                 WRITE_FIFO <= '0';

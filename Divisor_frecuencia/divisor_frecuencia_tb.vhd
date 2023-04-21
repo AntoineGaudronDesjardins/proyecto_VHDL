@@ -17,7 +17,7 @@ ARCHITECTURE test_divisor_frecuencia_arq OF test_divisor_frecuencia IS
     --Declaraci�n de componentes
     COMPONENT divisor_frecuencia
         GENERIC (
-            DIVISOR    : integer := 50000000
+            DIVISOR  : integer := 5
         );
         PORT (
             -- ENTRADAS --
@@ -43,9 +43,6 @@ BEGIN
     -- Se crea el componente U1 y se conecta a las se�ales internas de la arquitectura
     -- ///////////////////////////////////////////////////////////////////////////////
     U1: divisor_frecuencia
-        GENERIC MAP(
-            DIVISOR    => 5      -- Es mas visible para la simulaci�n
-        )
         PORT MAP(
             CLK      => CLK_test,
             RESET    => RESET_test,
@@ -60,7 +57,16 @@ BEGIN
 
     GenReset: PROCESS
     BEGIN
-        RESET_test <= '1';     WAIT FOR ciclo*3/4;
+        RESET_test <= '0';     WAIT FOR ciclo*3/4;
+        RESET_test <= '1';     WAIT FOR ciclo*6;
+        RESET_test <= '0';     
+        
+        WAIT FOR 16*ciclo;
+        
+        -- **********************************************************************
+        -- Prueba de interrupcion por el RESET
+        -- **********************************************************************
+        RESET_test <= '1';     WAIT FOR ciclo*6;
         RESET_test <= '0';     WAIT;
     END PROCESS GenReset;
     

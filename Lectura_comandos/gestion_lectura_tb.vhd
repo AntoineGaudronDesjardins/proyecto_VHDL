@@ -73,6 +73,9 @@ BEGIN
     GenReset: PROCESS
     BEGIN
         RESET_test <= '1';     WAIT FOR ciclo*3/4;
+        RESET_test <= '0';     WAIT FOR 20*ciclo;
+        
+        RESET_test <= '1';     WAIT FOR ciclo;
         RESET_test <= '0';     WAIT;
     END PROCESS GenReset;
 
@@ -85,6 +88,7 @@ BEGIN
         WAIT FOR 3*ciclo;
         
         FIFO_EMPTY_test <= '0';
+        WAIT FOR ciclo;
         FIFO_WORD_RD_test <= "00110";
         
         WAIT FOR ciclo*8;
@@ -92,6 +96,7 @@ BEGIN
         FINISHED_test <= '1';        
         WAIT FOR ciclo;        
         FINISHED_test <= '0';
+        WAIT FOR ciclo;
         FIFO_WORD_RD_test <= "11110";
         
         WAIT FOR ciclo*16;
@@ -100,10 +105,21 @@ BEGIN
         WAIT FOR ciclo;        
         FINISHED_test <= '0';
 
+        WAIT FOR ciclo;
+        FIFO_EMPTY_test <= '1';
+        FIFO_WORD_RD_test <= "00010";
+        
+        WAIT FOR ciclo*4;
+        
+        FINISHED_test <= '1';
+        WAIT FOR ciclo;        
+        FINISHED_test <= '0';
+        
         WAIT;
 	
     END PROCESS tb;
 END test_gestor_lectura_arq;
+
 
 
 

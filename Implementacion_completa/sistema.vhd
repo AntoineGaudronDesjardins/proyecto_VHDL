@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 entity sistema is
     generic (
         -- se desea una frecuencia de CLK_SLOW de 100Hz (CLK es 100MHz en el micro)
-        DIVISOR      : integer := 1000000
+        DIVISOR      : integer := 100000000
     );
     port (
         -- ENTRADAS --
@@ -104,7 +104,6 @@ architecture arch_sistema of sistema is
     -- Importacion del componente gestor_lectura
     component gestor_lectura
         generic (
-            WORD_SIZE   : integer := WORD_SIZE;
             CICLOS_SIZE : integer := CICLOS_SIZE
         );
         port (

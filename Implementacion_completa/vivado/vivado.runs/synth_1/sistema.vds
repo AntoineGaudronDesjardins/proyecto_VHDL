@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Mon Apr 10 22:23:20 2023
-# Process ID: 1736
+# Start of session at: Thu Apr 20 23:21:01 2023
+# Process ID: 2108
 # Current directory: C:/Users/antoi/Desktop/Codigos/Implementacion_completa/vivado/vivado.runs/synth_1
 # Command line: vivado.exe -log sistema.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source sistema.tcl
 # Log file: C:/Users/antoi/Desktop/Codigos/Implementacion_completa/vivado/vivado.runs/synth_1/sistema.vds
@@ -15,56 +15,53 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 22852 
+INFO: Helper process launched with PID 4896 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 339.789 ; gain = 75.973
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 339.102 ; gain = 70.738
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'sistema' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:20]
-	Parameter CICLOS_FILTER bound to: 4000000 - type: integer 
-INFO: [Synth 8-3491] module 'debouncing' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:4' bound to instance 'debouncing_inst' of component 'debouncing' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:167]
+INFO: [Synth 8-638] synthesizing module 'sistema' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:24]
+	Parameter DIVISOR bound to: 100000000 - type: integer 
+	Parameter CICLOS_FILTRO bound to: 400000000 - type: integer 
+INFO: [Synth 8-3491] module 'debouncing' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:4' bound to instance 'debouncing_inst1' of component 'debouncing' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:168]
 INFO: [Synth 8-638] synthesizing module 'debouncing' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:18]
-	Parameter CICLOS_FILTER bound to: 4000000 - type: integer 
-WARNING: [Synth 8-614] signal 'ciclos_antirebotes' is read in the process but is not in the sensitivity list [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:50]
+	Parameter CICLOS_FILTRO bound to: 400000000 - type: integer 
+INFO: [Synth 8-226] default block is never used [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:53]
 INFO: [Synth 8-256] done synthesizing module 'debouncing' (1#1) [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:18]
-	Parameter CICLOS_FILTER bound to: 4000000 - type: integer 
-INFO: [Synth 8-3491] module 'debouncing' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:4' bound to instance 'debouncing_inst1' of component 'debouncing' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:180]
-	Parameter CICLOS_FILTER bound to: 4000000 - type: integer 
-INFO: [Synth 8-3491] module 'debouncing' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:4' bound to instance 'debouncing_inst2' of component 'debouncing' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:193]
+	Parameter CICLOS_FILTRO bound to: 400000000 - type: integer 
+INFO: [Synth 8-3491] module 'debouncing' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:4' bound to instance 'debouncing_inst2' of component 'debouncing' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:181]
 	Parameter WORD_SIZE bound to: 6 - type: integer 
-	Parameter WORD_FIFO bound to: 15 - type: integer 
-INFO: [Synth 8-3491] module 'gestor_escritura' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd:5' bound to instance 'gestor_escritura_inst' of component 'gestor_escritura' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:206]
+	Parameter WORD_FIFO bound to: 6 - type: integer 
+INFO: [Synth 8-3491] module 'gestor_escritura' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd:5' bound to instance 'gestor_escritura_inst' of component 'gestor_escritura' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:194]
 INFO: [Synth 8-638] synthesizing module 'gestor_escritura' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd:24]
 	Parameter WORD_SIZE bound to: 6 - type: integer 
-	Parameter WORD_FIFO bound to: 15 - type: integer 
+	Parameter WORD_FIFO bound to: 6 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'gestor_escritura' (2#1) [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd:24]
 	Parameter WORD_SIZE bound to: 6 - type: integer 
 	Parameter FIFO_MAX bound to: 5 - type: integer 
-INFO: [Synth 8-3491] module 'fifo' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/fifo.vhd:5' bound to instance 'fifo_inst' of component 'fifo' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:223]
+INFO: [Synth 8-3491] module 'fifo' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/fifo.vhd:5' bound to instance 'fifo_inst' of component 'fifo' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:211]
 INFO: [Synth 8-638] synthesizing module 'fifo' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/fifo.vhd:25]
 	Parameter WORD_SIZE bound to: 6 - type: integer 
 	Parameter FIFO_MAX bound to: 5 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'fifo' (3#1) [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/fifo.vhd:25]
-	Parameter WORD_SIZE bound to: 6 - type: integer 
 	Parameter CICLOS_SIZE bound to: 5 - type: integer 
-INFO: [Synth 8-3491] module 'gestor_lectura' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:4' bound to instance 'gestor_lectura_inst' of component 'gestor_lectura' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:240]
-INFO: [Synth 8-638] synthesizing module 'gestor_lectura' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:24]
-	Parameter WORD_SIZE bound to: 6 - type: integer 
+INFO: [Synth 8-3491] module 'gestor_lectura' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:4' bound to instance 'gestor_lectura_inst' of component 'gestor_lectura' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:228]
+INFO: [Synth 8-638] synthesizing module 'gestor_lectura' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:23]
 	Parameter CICLOS_SIZE bound to: 5 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'gestor_lectura' (4#1) [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:24]
-	Parameter N_MAX bound to: 1000000 - type: integer 
-INFO: [Synth 8-3491] module 'divisor_frecuencia' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/divisor_frecuencia.vhd:4' bound to instance 'divisor_frecuencia_inst' of component 'divisor_frecuencia' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:258]
+INFO: [Synth 8-226] default block is never used [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'gestor_lectura' (4#1) [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:23]
+	Parameter DIVISOR bound to: 100000000 - type: integer 
+INFO: [Synth 8-3491] module 'divisor_frecuencia' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/divisor_frecuencia.vhd:4' bound to instance 'divisor_frecuencia_inst' of component 'divisor_frecuencia' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:246]
 INFO: [Synth 8-638] synthesizing module 'divisor_frecuencia' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/divisor_frecuencia.vhd:17]
-	Parameter N_MAX bound to: 1000000 - type: integer 
+	Parameter DIVISOR bound to: 100000000 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'divisor_frecuencia' (5#1) [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/divisor_frecuencia.vhd:17]
 	Parameter CICLOS_SIZE bound to: 5 - type: integer 
-INFO: [Synth 8-3491] module 'motor_stepper' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:5' bound to instance 'motor_stepper_inst' of component 'motor_stepper' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:270]
+INFO: [Synth 8-3491] module 'motor_stepper' declared at 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:5' bound to instance 'motor_stepper_inst' of component 'motor_stepper' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:258]
 INFO: [Synth 8-638] synthesizing module 'motor_stepper' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:22]
 	Parameter CICLOS_SIZE bound to: 5 - type: integer 
-WARNING: [Synth 8-614] signal 'CICLOS' is read in the process but is not in the sensitivity list [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:59]
 INFO: [Synth 8-256] done synthesizing module 'motor_stepper' (6#1) [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:22]
-INFO: [Synth 8-256] done synthesizing module 'sistema' (7#1) [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'sistema' (7#1) [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd:24]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 396.289 ; gain = 132.473
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 395.324 ; gain = 126.961
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -77,10 +74,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 396.289 ; gain = 132.473
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 395.324 ; gain = 126.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 396.289 ; gain = 132.473
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 395.324 ; gain = 126.961
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -91,62 +88,55 @@ Parsing XDC File [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/pines_i
 Finished Parsing XDC File [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/pines_implementacion_completa.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/pines_implementacion_completa.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/sistema_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/sistema_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 730.992 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 729.320 ; gain = 0.000
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 731.004 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 729.348 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 731.004 ; gain = 0.000
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 731.004 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 729.348 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 729.348 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 731.004 ; gain = 467.188
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:29 . Memory (MB): peak = 729.348 ; gain = 460.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 731.004 ; gain = 467.188
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:29 . Memory (MB): peak = 729.348 ; gain = 460.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 731.004 ; gain = 467.188
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:29 . Memory (MB): peak = 729.348 ; gain = 460.984
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-802] inferred FSM for state register 'actual_reg' in module 'debouncing'
-INFO: [Synth 8-5545] ROM "futuro" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5544] ROM "BUTTON_OUT" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "contador_antirebotes" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-802] inferred FSM for state register 'actual_reg' in module 'gestor_escritura'
 INFO: [Synth 8-5544] ROM "WORD_FIFO_WR" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "WRITE_FIFO" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/fifo.vhd:50]
+INFO: [Synth 8-5545] ROM "FIFO_FULL" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "FIFO_FULL" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "FIFO_DATA_reg[0]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "FIFO_DATA_reg[1]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "FIFO_DATA_reg[2]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "FIFO_DATA_reg[3]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "FIFO_DATA_reg[4]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "WRITE_POINTER" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "FIFO_EMPTY" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "FIFO_EMPTY" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "READ_POINTER" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-802] inferred FSM for state register 'actual_reg' in module 'gestor_lectura'
-INFO: [Synth 8-5544] ROM "CICLOS" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "READ_FIFO" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "START" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "SENTIDO" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "READ_FIFO" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5546] ROM "CLK_SLOW" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "CLK_SLOW" won't be mapped to RAM because address size (27) is larger than maximum supported(25)
 INFO: [Synth 8-802] inferred FSM for state register 'actual_reg' in module 'motor_stepper'
-INFO: [Synth 8-5544] ROM "FINISHED" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "MOTOR_OUT" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "contador" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "contador" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "contador" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "FINISHED" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "CICLOS_SINC" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
@@ -156,33 +146,20 @@ INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address s
 INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "futuro" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:39]
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:39]
+WARNING: [Synth 8-327] inferring latch for variable 'futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:37]
+WARNING: [Synth 8-327] inferring latch for variable 'contador_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:36]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                inactivo |                             0001 |                               00
-                  filtro |                             0010 |                               01
-                  activo |                             0100 |                               10
-                  espera |                             1000 |                               11
+                  reposo |                               00 |                               00
+              escritura1 |                               01 |                               01
+              escritura2 |                               10 |                               10
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'actual_reg' using encoding 'one-hot' in module 'debouncing'
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd:39]
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd:42]
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd:42]
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                  reposo |                              001 |                               00
-              escritura1 |                              010 |                               01
-              escritura2 |                              100 |                               10
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'actual_reg' using encoding 'one-hot' in module 'gestor_escritura'
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd:42]
-WARNING: [Synth 8-327] inferring latch for variable 'WORD_FIFO_WR_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd:66]
-WARNING: [Synth 8-327] inferring latch for variable 'READ_FIFO_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:51]
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:40]
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:40]
+INFO: [Synth 8-3354] encoded FSM with state register 'actual_reg' using encoding 'sequential' in module 'gestor_escritura'
+WARNING: [Synth 8-327] inferring latch for variable 'WORD_FIFO_WR_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd:67]
+WARNING: [Synth 8-327] inferring latch for variable 'READ_FIFO_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:48]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:38]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:38]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -192,31 +169,34 @@ WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/
           wait_for_motor |                             1000 |                               10
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'actual_reg' using encoding 'one-hot' in module 'gestor_lectura'
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:40]
-WARNING: [Synth 8-327] inferring latch for variable 'SENTIDO_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:52]
-WARNING: [Synth 8-327] inferring latch for variable 'CICLOS_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:66]
-WARNING: [Synth 8-327] inferring latch for variable 'START_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:53]
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:41]
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:41]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:38]
+WARNING: [Synth 8-327] inferring latch for variable 'SENTIDO_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:63]
+WARNING: [Synth 8-327] inferring latch for variable 'CICLOS_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:64]
+WARNING: [Synth 8-327] inferring latch for variable 'START_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd:49]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:43]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:43]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                  reposo |                       0000000001 |                             0000
-              blueorange |                       0000000010 |                             1000
-                    blue |                       0000000100 |                             0111
-                pinkblue |                       0000001000 |                             0110
-                    pink |                       0000010000 |                             0101
-              yellowpink |                       0000100000 |                             0100
-                  yellow |                       0001000000 |                             0011
-            orangeyellow |                       0010000000 |                             0010
-                  orange |                       0100000000 |                             0001
-                   final |                       1000000000 |                             1001
+                   final |                       0000000001 |                             1001
+                  reposo |                       0000000010 |                             0000
+              blueorange |                       0000000100 |                             1000
+                    blue |                       0000001000 |                             0111
+                pinkblue |                       0000010000 |                             0110
+                    pink |                       0000100000 |                             0101
+              yellowpink |                       0001000000 |                             0100
+                  yellow |                       0010000000 |                             0011
+            orangeyellow |                       0100000000 |                             0010
+                  orange |                       1000000000 |                             0001
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'actual_reg' using encoding 'one-hot' in module 'motor_stepper'
-WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:41]
-WARNING: [Synth 8-327] inferring latch for variable 'FINISHED_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:65]
+WARNING: [Synth 8-327] inferring latch for variable 'FSM_onehot_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:43]
+WARNING: [Synth 8-327] inferring latch for variable 'CICLOS_SINC_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:57]
+WARNING: [Synth 8-327] inferring latch for variable 'contador_futuro_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:44]
+WARNING: [Synth 8-327] inferring latch for variable 'SENTIDO_SINC_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:58]
+WARNING: [Synth 8-327] inferring latch for variable 'FINISHED_reg' [C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd:55]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:33 . Memory (MB): peak = 731.004 ; gain = 467.188
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:30 . Memory (MB): peak = 729.348 ; gain = 460.984
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -229,29 +209,33 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 4     
-	   2 Input     20 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 5     
+	   2 Input     27 Bit       Adders := 1     
 	   2 Input      5 Bit       Adders := 1     
 +---Registers : 
-	               32 Bit    Registers := 2     
-	               20 Bit    Registers := 1     
+	               32 Bit    Registers := 5     
+	               27 Bit    Registers := 1     
 	                6 Bit    Registers := 6     
-	                1 Bit    Registers := 3     
+	                2 Bit    Registers := 2     
 +---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
 	   2 Input     32 Bit        Muxes := 2     
-	   2 Input     20 Bit        Muxes := 1     
+	  10 Input     32 Bit        Muxes := 1     
+	   2 Input     27 Bit        Muxes := 1     
 	  10 Input     10 Bit        Muxes := 1     
 	   2 Input     10 Bit        Muxes := 11    
 	   3 Input      6 Bit        Muxes := 1     
-	   4 Input      4 Bit        Muxes := 3     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
 	  10 Input      4 Bit        Muxes := 2     
-	   3 Input      3 Bit        Muxes := 1     
-	   2 Input      3 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 4     
-	   2 Input      1 Bit        Muxes := 37    
-	   4 Input      1 Bit        Muxes := 12    
-	   3 Input      1 Bit        Muxes := 4     
-	  10 Input      1 Bit        Muxes := 3     
+	   4 Input      2 Bit        Muxes := 3     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 24    
+	   5 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 7     
+	   3 Input      1 Bit        Muxes := 2     
+	  10 Input      1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -261,56 +245,66 @@ Start RTL Hierarchical Component Statistics
 Hierarchical RTL Component report 
 Module debouncing 
 Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
 +---Muxes : 
-	   4 Input      4 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 1     
 	   4 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 5     
-	   4 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
 Module gestor_escritura 
 Detailed RTL Component Info : 
 +---Muxes : 
 	   3 Input      6 Bit        Muxes := 1     
-	   3 Input      3 Bit        Muxes := 1     
-	   2 Input      3 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 3     
-	   3 Input      1 Bit        Muxes := 4     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 3     
+	   3 Input      1 Bit        Muxes := 2     
 Module fifo 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 4     
+	   2 Input     32 Bit       Adders := 2     
 +---Registers : 
 	               32 Bit    Registers := 2     
 	                6 Bit    Registers := 6     
-	                1 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input     32 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 10    
+	   2 Input      1 Bit        Muxes := 17    
+	   4 Input      1 Bit        Muxes := 1     
 Module gestor_lectura 
 Detailed RTL Component Info : 
 +---Muxes : 
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
 	   4 Input      2 Bit        Muxes := 1     
-	   4 Input      1 Bit        Muxes := 6     
-	   2 Input      1 Bit        Muxes := 4     
+	   4 Input      1 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 2     
 Module divisor_frecuencia 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     20 Bit       Adders := 1     
+	   2 Input     27 Bit       Adders := 1     
 +---Registers : 
-	               20 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
+	               27 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input     20 Bit        Muxes := 1     
+	   2 Input     27 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 1     
 Module motor_stepper 
 Detailed RTL Component Info : 
 +---Adders : 
+	   2 Input     32 Bit       Adders := 1     
 	   2 Input      5 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
 +---Muxes : 
+	  10 Input     32 Bit        Muxes := 1     
 	  10 Input     10 Bit        Muxes := 1     
 	   2 Input     10 Bit        Muxes := 11    
 	  10 Input      4 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 4     
-	  10 Input      1 Bit        Muxes := 3     
+	  10 Input      1 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -327,9 +321,6 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-5545] ROM "debouncing_inst/futuro" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "debouncing_inst1/futuro" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "debouncing_inst2/futuro" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "fifo_inst/WRITE_POINTER" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "fifo_inst/FIFO_DATA_reg[0]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "fifo_inst/FIFO_DATA_reg[1]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -337,40 +328,71 @@ INFO: [Synth 8-5545] ROM "fifo_inst/FIFO_DATA_reg[2]" won't be mapped to RAM bec
 INFO: [Synth 8-5545] ROM "fifo_inst/FIFO_DATA_reg[3]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "fifo_inst/FIFO_DATA_reg[4]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "fifo_inst/READ_POINTER" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "fifo_inst/FIFO_EMPTY" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "fifo_inst/FIFO_EMPTY" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "divisor_frecuencia_inst/CLK_SLOW" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-3886] merging instance 'gestor_escritura_inst/WORD_FIFO_WR_reg[0]' (LD) to 'gestor_escritura_inst/WORD_FIFO_WR_reg[1]'
+INFO: [Synth 8-5545] ROM "fifo_inst/FIFO_FULL" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "fifo_inst/FIFO_FULL" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "divisor_frecuencia_inst/CLK_SLOW" won't be mapped to RAM because address size (27) is larger than maximum supported(25)
+INFO: [Synth 8-3886] merging instance 'gestor_escritura_inst/WORD_FIFO_WR_reg[0]' (LD) to 'gestor_escritura_inst/WORD_FIFO_WR_reg[3]'
 INFO: [Synth 8-3886] merging instance 'gestor_escritura_inst/WORD_FIFO_WR_reg[1]' (LD) to 'gestor_escritura_inst/WORD_FIFO_WR_reg[2]'
-INFO: [Synth 8-3886] merging instance 'gestor_escritura_inst/WORD_FIFO_WR_reg[2]' (LD) to 'gestor_escritura_inst/WORD_FIFO_WR_reg[3]'
+INFO: [Synth 8-3886] merging instance 'gestor_escritura_inst/WORD_FIFO_WR_reg[3]' (LD) to 'gestor_escritura_inst/WORD_FIFO_WR_reg[4]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\gestor_escritura_inst/WORD_FIFO_WR_reg[4] )
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[4][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[4][1]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[3][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[3][1]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[2][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[2][1]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[1][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[1][1]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[0][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[0][3]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[4][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[4][4]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[3][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[3][4]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[2][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[2][4]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[1][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[0][0]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[0][4]'
 INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[4][1]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[4][2]'
 INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[3][1]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[3][2]'
 INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[2][1]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[2][2]'
 INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[1][1]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[1][2]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[0][1]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[0][3]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[4][2]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[4][3]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[3][2]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[3][3]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[2][2]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[2][3]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[1][2]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[1][3]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[0][2]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[0][3]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_WORD_RD_reg[0]' (FDE) to 'fifo_inst/FIFO_WORD_RD_reg[1]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[0][1]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[0][2]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[4][3]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[4][4]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[3][3]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[3][4]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[2][3]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[2][4]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[1][3]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[1][4]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_DATA_reg[0][3]' (FDCE) to 'fifo_inst/FIFO_DATA_reg[0][4]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_WORD_RD_reg[0]' (FDE) to 'fifo_inst/FIFO_WORD_RD_reg[3]'
 INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_WORD_RD_reg[1]' (FDE) to 'fifo_inst/FIFO_WORD_RD_reg[2]'
-INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_WORD_RD_reg[2]' (FDE) to 'fifo_inst/FIFO_WORD_RD_reg[3]'
+INFO: [Synth 8-3886] merging instance 'fifo_inst/FIFO_WORD_RD_reg[3]' (FDE) to 'fifo_inst/FIFO_WORD_RD_reg[4]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\fifo_inst/FIFO_WORD_RD_reg[4] )
-INFO: [Synth 8-3886] merging instance 'gestor_lectura_inst/CICLOS_reg[0]' (LD) to 'gestor_lectura_inst/CICLOS_reg[2]'
+INFO: [Synth 8-3886] merging instance 'gestor_lectura_inst/CICLOS_reg[0]' (LD) to 'gestor_lectura_inst/CICLOS_reg[4]'
 INFO: [Synth 8-3886] merging instance 'gestor_lectura_inst/CICLOS_reg[1]' (LD) to 'gestor_lectura_inst/CICLOS_reg[2]'
-INFO: [Synth 8-3886] merging instance 'gestor_lectura_inst/CICLOS_reg[2]' (LD) to 'gestor_lectura_inst/CICLOS_reg[3]'
+INFO: [Synth 8-3886] merging instance 'gestor_lectura_inst/CICLOS_reg[3]' (LD) to 'gestor_lectura_inst/CICLOS_reg[4]'
+INFO: [Synth 8-3886] merging instance 'motor_stepper_inst/CICLOS_SINC_reg[0]' (LD) to 'motor_stepper_inst/CICLOS_SINC_reg[3]'
+INFO: [Synth 8-3886] merging instance 'motor_stepper_inst/CICLOS_SINC_reg[1]' (LD) to 'motor_stepper_inst/CICLOS_SINC_reg[2]'
+INFO: [Synth 8-3886] merging instance 'motor_stepper_inst/CICLOS_SINC_reg[3]' (LD) to 'motor_stepper_inst/CICLOS_SINC_reg[4]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\gestor_lectura_inst/CICLOS_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\motor_stepper_inst/CICLOS_SINC_reg[4] )
 WARNING: [Synth 8-3332] Sequential element (gestor_escritura_inst/WORD_FIFO_WR_reg[4]) is unused and will be removed from module sistema.
 WARNING: [Synth 8-3332] Sequential element (gestor_lectura_inst/CICLOS_reg[4]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/CICLOS_SINC_reg[4]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[31]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[30]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[29]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[28]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[27]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[26]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[25]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[24]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[23]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[22]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[21]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[20]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[19]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[18]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[17]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[16]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[15]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[14]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[13]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[12]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[11]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[10]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[9]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[8]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[7]) is unused and will be removed from module sistema.
+WARNING: [Synth 8-3332] Sequential element (motor_stepper_inst/contador_futuro_reg[6]) is unused and will be removed from module sistema.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:38 . Memory (MB): peak = 731.004 ; gain = 467.188
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:34 . Memory (MB): peak = 729.348 ; gain = 460.984
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -382,13 +404,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:00:58 . Memory (MB): peak = 731.004 ; gain = 467.188
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:46 . Memory (MB): peak = 729.348 ; gain = 460.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:50 ; elapsed = 00:01:00 . Memory (MB): peak = 746.680 ; gain = 482.863
+Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:47 . Memory (MB): peak = 745.727 ; gain = 477.363
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -400,7 +422,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:50 ; elapsed = 00:01:00 . Memory (MB): peak = 746.680 ; gain = 482.863
+Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:48 . Memory (MB): peak = 745.727 ; gain = 477.363
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -424,7 +446,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:52 ; elapsed = 00:01:03 . Memory (MB): peak = 746.680 ; gain = 482.863
+Finished IO Insertion : Time (s): cpu = 00:00:40 ; elapsed = 00:00:49 . Memory (MB): peak = 745.727 ; gain = 477.363
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -437,7 +459,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:52 ; elapsed = 00:01:03 . Memory (MB): peak = 746.680 ; gain = 482.863
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:40 ; elapsed = 00:00:49 . Memory (MB): peak = 745.727 ; gain = 477.363
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -449,25 +471,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:53 ; elapsed = 00:01:03 . Memory (MB): peak = 746.680 ; gain = 482.863
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:40 ; elapsed = 00:00:50 . Memory (MB): peak = 745.727 ; gain = 477.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:53 ; elapsed = 00:01:03 . Memory (MB): peak = 746.680 ; gain = 482.863
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:40 ; elapsed = 00:00:50 . Memory (MB): peak = 745.727 ; gain = 477.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:53 ; elapsed = 00:01:03 . Memory (MB): peak = 746.680 ; gain = 482.863
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:40 ; elapsed = 00:00:50 . Memory (MB): peak = 745.727 ; gain = 477.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:53 ; elapsed = 00:01:03 . Memory (MB): peak = 746.680 ; gain = 482.863
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:40 ; elapsed = 00:00:50 . Memory (MB): peak = 745.727 ; gain = 477.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -483,64 +505,60 @@ Report Cell Usage:
 +------+-------+------+
 |      |Cell   |Count |
 +------+-------+------+
-|1     |BUFG   |     2|
-|2     |CARRY4 |    71|
-|3     |LUT1   |    41|
-|4     |LUT2   |    35|
-|5     |LUT3   |    47|
-|6     |LUT4   |    37|
-|7     |LUT5   |    27|
-|8     |LUT6   |    90|
-|9     |FDCE   |   107|
-|10    |FDPE   |     1|
-|11    |FDRE   |   148|
-|12    |FDSE   |     6|
-|13    |LD     |    23|
-|14    |LDC    |     9|
-|15    |LDP    |     3|
-|16    |IBUF   |     4|
-|17    |OBUF   |     5|
+|1     |BUFG   |     4|
+|2     |CARRY4 |    49|
+|3     |LUT1   |     5|
+|4     |LUT2   |   165|
+|5     |LUT3   |    49|
+|6     |LUT4   |    30|
+|7     |LUT5   |    25|
+|8     |LUT6   |    58|
+|9     |FDCE   |   221|
+|10    |FDPE   |     2|
+|11    |FDRE   |     2|
+|12    |LD     |    29|
+|13    |LDC    |    68|
+|14    |IBUF   |     4|
+|15    |OBUF   |     5|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+--------------------------+-------------------+------+
 |      |Instance                  |Module             |Cells |
 +------+--------------------------+-------------------+------+
-|1     |top                       |                   |   656|
-|2     |  debouncing_inst         |debouncing         |    64|
-|3     |  debouncing_inst1        |debouncing_0       |    60|
-|4     |  debouncing_inst2        |debouncing_1       |    60|
-|5     |  divisor_frecuencia_inst |divisor_frecuencia |    52|
-|6     |  fifo_inst               |fifo               |   329|
-|7     |  gestor_escritura_inst   |gestor_escritura   |    12|
-|8     |  gestor_lectura_inst     |gestor_lectura     |    18|
-|9     |  motor_stepper_inst      |motor_stepper      |    50|
+|1     |top                       |                   |   716|
+|2     |  debouncing_inst1        |debouncing         |   121|
+|3     |  debouncing_inst2        |debouncing_0       |   122|
+|4     |  divisor_frecuencia_inst |divisor_frecuencia |    68|
+|5     |  fifo_inst               |fifo               |   231|
+|6     |  gestor_escritura_inst   |gestor_escritura   |    81|
+|7     |  gestor_lectura_inst     |gestor_lectura     |    17|
+|8     |  motor_stepper_inst      |motor_stepper      |    62|
 +------+--------------------------+-------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:53 ; elapsed = 00:01:03 . Memory (MB): peak = 746.680 ; gain = 482.863
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:40 ; elapsed = 00:00:50 . Memory (MB): peak = 745.727 ; gain = 477.363
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 20 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:35 ; elapsed = 00:00:48 . Memory (MB): peak = 746.680 ; gain = 148.148
-Synthesis Optimization Complete : Time (s): cpu = 00:00:53 ; elapsed = 00:01:03 . Memory (MB): peak = 746.680 ; gain = 482.863
+Synthesis finished with 0 errors, 0 critical warnings and 46 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:36 . Memory (MB): peak = 745.727 ; gain = 143.340
+Synthesis Optimization Complete : Time (s): cpu = 00:00:40 ; elapsed = 00:00:50 . Memory (MB): peak = 745.727 ; gain = 477.363
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 106 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 146 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 747.500 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 745.727 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 35 instances were transformed.
-  LD => LDCE: 23 instances
-  LDC => LDCE: 9 instances
-  LDP => LDPE: 3 instances
+  A total of 97 instances were transformed.
+  LD => LDCE: 29 instances
+  LDC => LDCE: 68 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-118 Infos, 22 Warnings, 0 Critical Warnings and 0 Errors encountered.
+112 Infos, 46 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:57 ; elapsed = 00:01:08 . Memory (MB): peak = 747.500 ; gain = 483.684
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 747.500 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:55 . Memory (MB): peak = 745.727 ; gain = 477.363
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 745.727 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/antoi/Desktop/Codigos/Implementacion_completa/vivado/vivado.runs/synth_1/sistema.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file sistema_utilization_synth.rpt -pb sistema_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Apr 10 22:24:36 2023...
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 20 23:22:06 2023...

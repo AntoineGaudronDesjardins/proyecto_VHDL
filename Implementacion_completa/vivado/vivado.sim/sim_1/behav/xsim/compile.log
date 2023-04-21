@@ -1,0 +1,14 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/antoi/Desktop/Codigos/Implementacion_completa/antirebotes.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'debouncing'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/antoi/Desktop/Codigos/Implementacion_completa/fifo.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'fifo'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_escritura.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'gestor_escritura'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/antoi/Desktop/Codigos/Implementacion_completa/gestion_lectura.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'gestor_lectura'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/antoi/Desktop/Codigos/Implementacion_completa/motor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'motor_stepper'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'sistema'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/antoi/Desktop/Codigos/Implementacion_completa/sistema_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'test_sistema'

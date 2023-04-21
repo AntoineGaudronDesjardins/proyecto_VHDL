@@ -58,7 +58,15 @@ architecture arch_fifo_tb of fifo_tb is
 begin
 
     CLK_test    <= not CLK_test after periodo/2;
-    RESET_test  <= '1', '0' after periodo*3/4;
+
+    GenReset: PROCESS
+    BEGIN
+        RESET_test <= '1';     WAIT FOR periodo*3/4;
+        RESET_test <= '0';     WAIT FOR 36*periodo;
+
+        RESET_test <= '1';     WAIT FOR periodo;
+        RESET_test <= '0';     WAIT;
+    END PROCESS GenReset;
     
     fifo_inst : fifo
         port map(
@@ -76,7 +84,9 @@ begin
 
     process
     begin
-    
+        -- **********************************************************************
+        -- Prueba del escenario del enuciado
+        -- **********************************************************************
         WRITE_FIFO_test <= '0';
         READ_FIFO_test  <= '0';
         wait for 3*periodo;
@@ -143,7 +153,45 @@ begin
         READ_FIFO_test <= '0';
         wait for periodo;
         -- d) 1 more read (empty)
+
+        -- **********************************************************************
+        -- Prueba de interrupcion por el RESET
+        -- **********************************************************************
+        WRITE_FIFO_test <= '0';
+        READ_FIFO_test  <= '0';
+        wait for 3*periodo;
+        -- a) initial (empty)
         
+        WRITE_FIFO_test   <= '1';
+        FIFO_WORD_WR_test <= "0001";
+        wait for periodo;
+        WRITE_FIFO_test   <= '0';
+        wait for periodo;
+        -- b) after a write
+        
+        WRITE_FIFO_test   <= '1';
+        FIFO_WORD_WR_test <= "0010";
+        wait for periodo;
+        FIFO_WORD_WR_test <= "0011";
+        wait for periodo;
+        FIFO_WORD_WR_test <= "0100";
+        wait for periodo;
+        WRITE_FIFO_test   <= '0';
+        wait for periodo;
+        -- c) 3 more writes
+        
+        WRITE_FIFO_test   <= '1';
+        FIFO_WORD_WR_test <= "0101";
+        wait for periodo;
+        FIFO_WORD_WR_test <= "0110";
+        wait for periodo;
+        FIFO_WORD_WR_test <= "0111";
+        wait for periodo;
+        FIFO_WORD_WR_test <= "1000";
+        wait for periodo;
+        WRITE_FIFO_test   <= '0';
+        wait for periodo;
+        -- e) 4 more writes
         wait;
 
     end process;

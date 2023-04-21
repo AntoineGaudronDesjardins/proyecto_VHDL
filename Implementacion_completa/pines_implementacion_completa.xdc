@@ -9,10 +9,10 @@ set_property PACKAGE_PIN W5                                           [get_ports
 #------------------------------------------------------------------              
             set_property PACKAGE_PIN U18       [get_ports {BUTTON_RESET}]            
               set_property IOSTANDARD LVCMOS33 [get_ports {BUTTON_RESET}]
-            set_property PACKAGE_PIN W19       [get_ports BUTTON_1]            
-              set_property IOSTANDARD LVCMOS33 [get_ports BUTTON_1]
-            set_property PACKAGE_PIN T17       [get_ports BUTTON_2]            
-              set_property IOSTANDARD LVCMOS33 [get_ports BUTTON_2]
+            set_property PACKAGE_PIN W19       [get_ports {BUTTON_1}]            
+              set_property IOSTANDARD LVCMOS33 [get_ports {BUTTON_1}]
+            set_property PACKAGE_PIN T17       [get_ports {BUTTON_2}]            
+              set_property IOSTANDARD LVCMOS33 [get_ports {BUTTON_2}]
                                 
 #------------------------------------------------------------------              
 # LEDs

@@ -56,18 +56,22 @@ begin
                     contador_futuro <= 0;
                 
                 when filtro =>
-                    if (contador+1 = CICLOS_FILTRO-1) then
-                        contador_futuro <= 0;
+                    contador_futuro <= contador + 1;
+                    if (contador + 1 = CICLOS_FILTRO - 1) then
                         futuro <= activo;
-                    else
-                        contador_futuro <= contador + 1;
                     end if;
                 
                 when activo =>
+                    contador_futuro <= 0;
                     futuro <= espera;
                 
                 when espera =>
                     futuro <= espera;
+                
+                when others =>
+                    contador_futuro <= 0;
+                    futuro <= inactivo;
+
             end case;
         else
             contador_futuro <= 0;
